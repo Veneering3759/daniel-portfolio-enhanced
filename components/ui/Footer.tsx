@@ -16,8 +16,7 @@ export function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
-            © {new Date().getFullYear()} Daniel Aryee. Built with{' '}
-            <span className="text-gradient">Next.js & Tailwind CSS</span>.
+            © {new Date().getFullYear()} Daniel Aryee. All rights reserved.
           </motion.p>
 
           <motion.div
