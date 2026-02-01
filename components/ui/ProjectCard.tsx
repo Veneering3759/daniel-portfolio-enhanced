@@ -139,7 +139,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               ease: 'easeInOut',
             }}
           >
-            <Sparkles size={24} className="text-luxury-gold" />
+            <Sparkles size={24} className="text-brand-emerald" />
           </motion.div>
         </div>
 
@@ -170,7 +170,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 viewport={{ once: true }}
               >
                 <motion.div
-                  className="w-1.5 h-1.5 rounded-full bg-luxury-gold mt-1.5 flex-shrink-0"
+                  className="w-1.5 h-1.5 rounded-full bg-brand-emerald mt-1.5 flex-shrink-0"
                   whileHover={{ scale: 1.5, boxShadow: '0 0 10px rgba(212, 175, 55, 0.8)' }}
                 />
                 <p className="text-slate-400 text-sm flex-1">{highlight}</p>
@@ -183,7 +183,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
             {project.tech.map((tech, i) => (
               <motion.span
                 key={tech}
-                className="px-3 py-1.5 glassmorphism-luxury text-slate-200 text-xs rounded-full border border-luxury-gold/20 font-medium"
+                className="px-3 py-1.5 glassmorphism-luxury text-slate-200 text-xs rounded-full border border-brand-emerald/20 font-medium"
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 whileHover={{
@@ -215,7 +215,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               whileTap={{ scale: 0.95 }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-luxury-gold to-blue-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"
+                className="absolute inset-0 bg-gradient-to-r from-brand-emerald to-blue-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"
               />
               <span className="relative z-10">Live Demo</span>
               <ExternalLink size={14} className="relative z-10" />
@@ -225,7 +225,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 glassmorphism-luxury text-white rounded-lg text-sm font-semibold border border-luxury-gold/20 hover:border-luxury-gold/50"
+              className="flex items-center gap-2 px-5 py-2.5 glassmorphism-luxury text-white rounded-lg text-sm font-semibold border border-brand-emerald/20 hover:border-brand-emerald/50"
               whileHover={{
                 y: -3,
                 boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)',
@@ -238,7 +238,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
             <Link href={project.caseStudyUrl} passHref>
               <motion.span
-                className="ml-auto text-luxury-gold text-sm font-semibold cursor-pointer inline-flex items-center gap-1 hover:gap-2 transition-all"
+                className="ml-auto text-brand-emerald text-sm font-semibold cursor-pointer inline-flex items-center gap-1 hover:gap-2 transition-all"
                 whileHover={{ scale: 1.05 }}
               >
                 Case Study
@@ -259,7 +259,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Luxury corner accent */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-luxury-gold/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-brand-emerald/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </motion.div>
   )

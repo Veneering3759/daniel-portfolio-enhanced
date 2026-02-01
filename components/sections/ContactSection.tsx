@@ -13,7 +13,7 @@ export function ContactSection() {
       <div className="absolute inset-0 grid-pattern" />
 
       {/* Radial glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-luxury-gold/10 rounded-full blur-3xl animate-pulse-slow" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-emerald/10 rounded-full blur-3xl animate-pulse-slow" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <motion.div
@@ -28,8 +28,8 @@ export function ContactSection() {
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 glassmorphism-luxury rounded-full mb-6"
             >
-              <Sparkles size={16} className="text-luxury-gold" />
-              <span className="text-luxury-gold text-sm font-semibold">Let's Collaborate</span>
+              <Sparkles size={16} className="text-brand-emerald" />
+              <span className="text-brand-emerald text-sm font-semibold">Let's Collaborate</span>
             </motion.div>
 
             <motion.h2
@@ -62,27 +62,27 @@ export function ContactSection() {
                 scale: 1.02,
               }}
               whileTap={{ scale: 0.98 }}
-              className="md:col-span-2 p-8 luxury-card rounded-xl group cursor-pointer border-2 border-luxury-gold/30 hover:border-luxury-gold/60 transition-all relative overflow-hidden"
+              className="md:col-span-2 p-8 luxury-card rounded-xl group cursor-pointer border-2 border-brand-emerald/30 hover:border-brand-emerald/60 transition-all relative overflow-hidden"
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-luxury-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-brand-emerald/5 opacity-0 group-hover:opacity-100 transition-opacity"
               />
               <div className="relative z-10 flex items-center gap-4">
                 <motion.div
-                  className="p-4 rounded-xl bg-luxury-gold/10 group-hover:bg-luxury-gold/20 transition-colors"
+                  className="p-4 rounded-xl bg-brand-emerald/10 group-hover:bg-brand-emerald/20 transition-colors"
                   whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Mail size={28} className="text-luxury-gold" />
+                  <Mail size={28} className="text-brand-emerald" />
                 </motion.div>
                 <div className="flex-1">
                   <p className="text-slate-400 text-sm mb-1">Email</p>
-                  <p className="text-white font-semibold text-lg group-hover:text-luxury-gold transition-colors">
+                  <p className="text-white font-semibold text-lg group-hover:text-brand-emerald transition-colors">
                     {profile.email}
                   </p>
                 </div>
                 <motion.div
-                  className="text-luxury-gold"
+                  className="text-brand-emerald"
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
                 >
@@ -155,11 +155,11 @@ export function ContactSection() {
             <motion.div
               variants={fadeInUp}
               whileHover={{ y: -6, scale: 1.02 }}
-              className="p-6 luxury-card rounded-xl border-2 border-luxury-gold/20"
+              className="p-6 luxury-card rounded-xl border-2 border-brand-emerald/20"
             >
               <div className="flex items-center gap-3">
-                <div className="p-3 rounded-lg bg-luxury-gold/10">
-                  <MapPin size={20} className="text-luxury-gold" />
+                <div className="p-3 rounded-lg bg-brand-emerald/10">
+                  <MapPin size={20} className="text-brand-emerald" />
                 </div>
                 <div>
                   <p className="text-slate-500 text-xs">Location</p>
@@ -174,9 +174,9 @@ export function ContactSection() {
             variants={fadeInUp}
             className="relative overflow-hidden rounded-2xl"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-luxury-gold/20 to-purple-600/20 animate-gradient-shift" />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-brand-emerald/20 to-purple-600/20 animate-gradient-shift" />
             <motion.div
-              className="relative p-8 glassmorphism-luxury border-2 border-luxury-gold/30 rounded-2xl text-center"
+              className="relative p-8 glassmorphism-luxury border-2 border-brand-emerald/30 rounded-2xl text-center"
               whileHover={{ scale: 1.02 }}
             >
               <motion.div
@@ -191,7 +191,7 @@ export function ContactSection() {
                 }}
               >
                 <motion.div
-                  className="w-3 h-3 bg-luxury-gold rounded-full"
+                  className="w-3 h-3 bg-brand-emerald rounded-full"
                   animate={{
                     scale: [1, 1.3, 1],
                     boxShadow: [
@@ -204,13 +204,13 @@ export function ContactSection() {
                     repeat: Infinity,
                   }}
                 />
-                <span className="text-luxury-gold font-semibold text-sm">
+                <span className="text-brand-emerald font-semibold text-sm">
                   Currently Available
                 </span>
               </motion.div>
               <p className="text-slate-200 text-lg">
                 <span className="text-gradient-luxury font-semibold">
-                  Open for elite opportunities
+                  Open to new opportunities
                 </span>
                 {' '}— Based in London, flexible with US/EU time zones. Ready to make an immediate impact on your next project.
               </p>

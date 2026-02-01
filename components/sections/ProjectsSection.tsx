@@ -15,7 +15,7 @@ export function ProjectsSection() {
 
       {/* Radial glows */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-luxury-gold/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-emerald/10 rounded-full blur-3xl" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-6">
         {/* Premium section header */}
@@ -30,8 +30,8 @@ export function ProjectsSection() {
             variants={fadeInUp}
             className="inline-flex items-center gap-2 px-4 py-2 glassmorphism-luxury rounded-full mb-6"
           >
-            <Award size={16} className="text-luxury-gold" />
-            <span className="text-luxury-gold text-sm font-semibold">Featured Work</span>
+            <Award size={16} className="text-brand-emerald" />
+            <span className="text-brand-emerald text-sm font-semibold">Featured Work</span>
           </motion.div>
 
           <motion.h2
