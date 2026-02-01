@@ -9,9 +9,9 @@ export const projects = [
     githubUrl: 'https://github.com/Veneering3759/leadmanager-crm',
     caseStudyUrl: 'https://crm-dashboard-navy.vercel.app',
     highlights: [
-      '67% average conversion from leads to paying clients',
-      'Real time pipeline tracking with instant updates',
-      'API response times under 100ms',
+      'Demo CRM with pipeline tracking and lead management',
+      'Real-time pipeline updates with optimistic UI for instant feedback',
+      'API response times under 100ms with MongoDB indexing',
     ],
     tech: ['React', 'Tailwind', 'Node.js', 'Express', 'MongoDB'],
     technicalDepth: {
@@ -53,7 +53,7 @@ export const projects = [
     id: 'evently',
     title: 'Evently',
     tagline: 'Professional Event Planning Platform',
-    description: 'Comprehensive event planning application for weddings, parties, and special occasions. Features real time timeline management, guest organization with RSVP tracking, budget monitoring, vendor coordination, task checklists, and notes. Built with a sophisticated design system for an elegant planning experience. This project demonstrates frontend excellence and UX design thinking.',
+    description: 'Event planning application for weddings, parties, and special occasions. Features real-time timeline management, guest organization with RSVP tracking, budget monitoring, vendor coordination, task checklists, and notes. Built with a consistent design system for a clean, intuitive interface. This project demonstrates frontend development and component architecture.',
     image: '/projects/evently.png',
     liveUrl: 'https://daniel-planner.vercel.app',
     githubUrl: 'https://github.com/Veneering3759/daniel-planner',
@@ -65,7 +65,7 @@ export const projects = [
     ],
     tech: ['Next.js 16', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
     technicalDepth: {
-      challenge: 'Event planning involves multiple complex workflows (guests, budget, vendors, tasks, timeline, notes) that need to feel cohesive, not like six separate apps duct-taped together. The interface needed to be elegant enough for wedding planning while remaining functional.',
+      challenge: 'Event planning involves multiple complex workflows (guests, budget, vendors, tasks, timeline, notes) that need to feel cohesive, not like six separate apps duct-taped together. The interface needed to be clean and intuitive for wedding planning while remaining functional.',
       solution: 'Built a reusable component architecture where each module (Dashboard, Timeline, Guests, etc.) shares the same design language and interaction patterns. Created a unified color system (indigo and coral) with consistent spacing, typography, and animation timing.',
       architecture: 'Adopted a mobile-first responsive approach using Tailwind CSS breakpoints throughout. Every component was designed for small screens first, then enhanced for desktop. Used Framer Motion strategically for micro-interactions (hover states, transitions) that enhance usability without overwhelming users. TypeScript provided type safety across all components, catching bugs before runtime.',
       learned: 'The importance of design systems in larger applications. Early on, I was writing one-off styles for each feature, which led to inconsistency. I learned to establish a design system first (colors, spacing scale, animation timing) and build components that compose together naturally. This made the codebase more maintainable and the user experience more cohesive.',

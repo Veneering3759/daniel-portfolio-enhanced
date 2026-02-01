@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { profile } from '@/lib/projects'
 import { fadeInUp, staggerContainer } from '../animations/variants'
-import { Mail, Github, Linkedin, MapPin, Sparkles } from 'lucide-react'
+import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
 
 export function ContactSection() {
   return (
@@ -28,7 +28,18 @@ export function ContactSection() {
               variants={fadeInUp}
               className="inline-flex items-center gap-2 px-4 py-2 glassmorphism-luxury rounded-full mb-6"
             >
-              <Sparkles size={16} className="text-brand-emerald" />
+              <motion.div
+                className="w-2 h-2 bg-brand-emerald rounded-full"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [1, 0.6, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
               <span className="text-brand-emerald text-sm font-semibold">Let's Collaborate</span>
             </motion.div>
 
@@ -36,15 +47,15 @@ export function ContactSection() {
               variants={fadeInUp}
               className="text-4xl md:text-5xl font-bold mb-4"
             >
-              <span className="text-white">Ready to Build </span>
-              <span className="text-gradient-luxury">Something Amazing?</span>
+              <span className="text-white">Let's </span>
+              <span className="text-gradient-luxury">Work Together</span>
             </motion.h2>
 
             <motion.p
               variants={fadeInUp}
               className="text-xl text-slate-300 max-w-2xl mx-auto"
             >
-              Open for exciting opportunities and challenging projects
+              Looking for my first full-time developer role to build production applications
             </motion.p>
           </motion.div>
 
@@ -70,7 +81,7 @@ export function ContactSection() {
               <div className="relative z-10 flex items-center gap-4">
                 <motion.div
                   className="p-4 rounded-xl bg-brand-emerald/10 group-hover:bg-brand-emerald/20 transition-colors"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
                   <Mail size={28} className="text-brand-emerald" />
@@ -107,7 +118,7 @@ export function ContactSection() {
               <div className="flex items-center gap-3 mb-3">
                 <motion.div
                   className="p-3 rounded-lg bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors"
-                  whileHover={{ rotate: 360 }}
+                  whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 >
                   <Github size={20} className="text-blue-400" />
@@ -210,9 +221,9 @@ export function ContactSection() {
               </motion.div>
               <p className="text-slate-200 text-lg">
                 <span className="text-gradient-luxury font-semibold">
-                  Open to new opportunities
+                  Seeking full-time opportunities
                 </span>
-                {' '}— Based in London, flexible with US/EU time zones. Ready to make an immediate impact on your next project.
+                {' '}— Based in London (GMT), available for US/EU companies. Happy to work across time zones and start immediately.
               </p>
             </motion.div>
           </motion.div>

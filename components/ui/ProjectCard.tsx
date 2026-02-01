@@ -97,7 +97,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {/* Card content */}
       <div className="relative luxury-card rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-luxury-hover transition-shadow duration-500">
         {/* Premium gradient header with gold accent */}
-        <div className="relative h-56 overflow-hidden">
+        <div className="relative h-40 overflow-hidden">
           <motion.div
             className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}
             animate={{
@@ -125,22 +125,29 @@ export function ProjectCard({ project }: ProjectCardProps) {
           {/* Grid pattern overlay */}
           <div className="absolute inset-0 grid-pattern opacity-20" />
 
-          {/* Floating sparkle */}
-          <motion.div
-            className="absolute top-4 right-4"
-            animate={{
-              rotate: [0, 360],
-              scale: [1, 1.2, 1],
-              opacity: isHovered ? [0.5, 1, 0.5] : 0,
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'easeInOut',
-            }}
-          >
-            <Sparkles size={24} className="text-brand-emerald" />
-          </motion.div>
+          {/* Live indicator with green dot */}
+          <div className="absolute top-4 right-4">
+            <motion.div
+              className="flex items-center gap-2 px-3 py-1.5 glassmorphism-luxury rounded-full"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <motion.div
+                className="w-2 h-2 bg-brand-emerald rounded-full"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [1, 0.6, 1],
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: 'easeInOut',
+                }}
+              />
+              <span className="text-brand-emerald text-xs font-semibold">Live</span>
+            </motion.div>
+          </div>
         </div>
 
         {/* Content with premium styling */}

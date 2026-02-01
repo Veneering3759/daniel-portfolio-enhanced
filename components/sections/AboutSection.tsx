@@ -75,8 +75,8 @@ export function AboutSection() {
             <motion.p variants={fadeInUp} className="leading-relaxed">
               Based in London but built for remote work. I've managed full development cycles
               independently, from initial architecture decisions to deployment and monitoring.
-              My applications handle real world data at scale, from processing 5,000+ leads in
-              under 30 seconds to managing complex event planning workflows. Comfortable working
+              My applications handle real-world use cases, from CRM pipeline tracking to
+              managing complex event planning workflows with multiple integrated modules. Comfortable working
               across US and EU time zones.
             </motion.p>
           </div>

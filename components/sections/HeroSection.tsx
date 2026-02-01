@@ -66,65 +66,32 @@ export function HeroSection() {
         ))}
       </div>
 
-      {/* Elegant floating shapes with emerald and rose accents */}
+      {/* Static gradient orbs - no spinning */}
       <motion.div
-        className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-30"
+        className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-20"
         style={{
           background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(244, 63, 94, 0.2))',
-          filter: 'blur(2px)',
+          filter: 'blur(40px)',
           y,
           opacity,
         }}
-        animate={{
-          y: [0, -35, 0],
-          rotate: [0, 180, 360],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 25,
-          repeat: Infinity,
-          ease: 'linear',
-        }}
       />
       <motion.div
-        className="absolute bottom-20 right-10 w-32 h-32 rotate-45"
+        className="absolute bottom-20 right-10 w-32 h-32 rounded-full opacity-20"
         style={{
           background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 63, 94, 0.3))',
-          border: '2px solid rgba(244, 63, 94, 0.3)',
-          filter: 'blur(1px)',
+          filter: 'blur(40px)',
           y,
           opacity,
-        }}
-        animate={{
-          y: [0, 35, 0],
-          rotate: [45, 225, 405],
-          scale: [1, 1.15, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: 'linear',
         }}
       />
       <motion.div
-        className="absolute top-1/3 right-1/4 w-20 h-20"
+        className="absolute top-1/3 right-1/4 w-24 h-24 rounded-full opacity-15"
         style={{
           background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(16, 185, 129, 0.2))',
-          border: '2px solid rgba(16, 185, 129, 0.3)',
-          clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
+          filter: 'blur(30px)',
           y,
           opacity,
-        }}
-        animate={{
-          y: [0, -25, 0],
-          x: [0, 25, 0],
-          rotate: [0, 90, 180, 270, 360],
-          scale: [1, 1.2, 1],
-        }}
-        transition={{
-          duration: 30,
-          repeat: Infinity,
-          ease: 'linear',
         }}
       />
 
@@ -141,20 +108,6 @@ export function HeroSection() {
           className="inline-flex items-center gap-2 px-5 py-2.5 glassmorphism-luxury rounded-full mb-8 shadow-luxury"
         >
           <motion.div
-            animate={{
-              rotate: [0, 360],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          >
-            <Sparkles size={16} className="text-brand-emerald" />
-          </motion.div>
-          <span className="text-gradient-gold font-semibold text-sm">Open to New Opportunities</span>
-          <motion.div
             className="w-2 h-2 bg-brand-emerald rounded-full"
             animate={{
               scale: [1, 1.3, 1],
@@ -166,6 +119,7 @@ export function HeroSection() {
               ease: 'easeInOut',
             }}
           />
+          <span className="text-gradient-gold font-semibold text-sm">Available for Full-Time Roles</span>
         </motion.div>
 
         {/* Name with premium styling */}
@@ -211,8 +165,8 @@ export function HeroSection() {
             animation: 'shimmer 4s linear infinite',
           }}
         >
-          Building elegant SaaS applications that drive real business results.
-          Specialized in modern React, Node.js, and scalable cloud architectures.
+          Building full-stack web applications with React, Node.js, and MongoDB.
+          From fitness tracking to CRM systems, I create tools that solve real problems for real users.
         </motion.p>
 
         {/* Location badges with modern styling */}
