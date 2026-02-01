@@ -33,8 +33,8 @@ export function HeroSection() {
       <div className="absolute inset-0 gradient-bg-animated" />
 
       {/* Radial glow effects */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-luxury-gold/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-emerald/20 rounded-full blur-3xl animate-pulse-slow" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-rose/10 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
 
       {/* Premium floating particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -42,9 +42,9 @@ export function HeroSection() {
           <motion.div
             key={i}
             className={`absolute rounded-full ${
-              i % 3 === 0 ? 'bg-luxury-gold/40 w-1.5 h-1.5' :
-              i % 3 === 1 ? 'bg-blue-400/40 w-1 h-1' :
-              'bg-purple-400/30 w-0.5 h-0.5'
+              i % 3 === 0 ? 'bg-brand-rose/40 w-1.5 h-1.5' :
+              i % 3 === 1 ? 'bg-brand-emerald/40 w-1 h-1' :
+              'bg-brand-pink/30 w-0.5 h-0.5'
             }`}
             style={{
               left: `${Math.random() * 100}%`,
@@ -66,11 +66,11 @@ export function HeroSection() {
         ))}
       </div>
 
-      {/* Elegant floating shapes with gold accents */}
+      {/* Elegant floating shapes with emerald and rose accents */}
       <motion.div
         className="absolute top-20 left-10 w-40 h-40 rounded-full opacity-30"
         style={{
-          background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(212, 175, 55, 0.2))',
+          background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.3), rgba(244, 63, 94, 0.2))',
           filter: 'blur(2px)',
           y,
           opacity,
@@ -89,8 +89,8 @@ export function HeroSection() {
       <motion.div
         className="absolute bottom-20 right-10 w-32 h-32 rotate-45"
         style={{
-          background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(212, 175, 55, 0.3))',
-          border: '2px solid rgba(212, 175, 55, 0.3)',
+          background: 'linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 63, 94, 0.3))',
+          border: '2px solid rgba(244, 63, 94, 0.3)',
           filter: 'blur(1px)',
           y,
           opacity,
@@ -109,8 +109,8 @@ export function HeroSection() {
       <motion.div
         className="absolute top-1/3 right-1/4 w-20 h-20"
         style={{
-          background: 'linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(59, 130, 246, 0.2))',
-          border: '2px solid rgba(59, 130, 246, 0.3)',
+          background: 'linear-gradient(135deg, rgba(20, 184, 166, 0.2), rgba(16, 185, 129, 0.2))',
+          border: '2px solid rgba(16, 185, 129, 0.3)',
           clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)',
           y,
           opacity,
@@ -135,7 +135,7 @@ export function HeroSection() {
         initial="initial"
         animate="animate"
       >
-        {/* Elite badge */}
+        {/* Status badge */}
         <motion.div
           variants={fadeInUp}
           className="inline-flex items-center gap-2 px-5 py-2.5 glassmorphism-luxury rounded-full mb-8 shadow-luxury"
@@ -151,11 +151,11 @@ export function HeroSection() {
               ease: 'linear',
             }}
           >
-            <Sparkles size={16} className="text-luxury-gold" />
+            <Sparkles size={16} className="text-brand-emerald" />
           </motion.div>
-          <span className="text-gradient-gold font-semibold text-sm">Available for Elite Projects</span>
+          <span className="text-gradient-gold font-semibold text-sm">Open to New Opportunities</span>
           <motion.div
-            className="w-2 h-2 bg-luxury-gold rounded-full"
+            className="w-2 h-2 bg-brand-emerald rounded-full"
             animate={{
               scale: [1, 1.3, 1],
               opacity: [1, 0.6, 1],
@@ -180,7 +180,7 @@ export function HeroSection() {
                 variants={letterReveal}
                 className="inline-block"
                 style={{
-                  textShadow: '0 0 40px rgba(59, 130, 246, 0.5), 0 0 80px rgba(212, 175, 55, 0.3)',
+                  textShadow: '0 0 40px rgba(16, 185, 129, 0.5), 0 0 80px rgba(244, 63, 94, 0.3)',
                 }}
               >
                 {char === ' ' ? '\u00A0' : char}
@@ -191,10 +191,10 @@ export function HeroSection() {
             className="block text-gradient-luxury text-5xl md:text-7xl"
             variants={fadeInUp}
             style={{
-              textShadow: '0 0 60px rgba(59, 130, 246, 0.4)',
+              textShadow: '0 0 60px rgba(16, 185, 129, 0.4)',
             }}
           >
-            Full-Stack Developer
+            Full Stack Developer
           </motion.span>
         </motion.h1>
 
@@ -203,7 +203,7 @@ export function HeroSection() {
           variants={fadeInUp}
           className="text-xl md:text-2xl mb-4 max-w-3xl mx-auto leading-relaxed"
           style={{
-            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(212, 175, 55, 0.8), rgba(255, 255, 255, 0.95))',
+            background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(16, 185, 129, 0.8), rgba(255, 255, 255, 0.95))',
             backgroundSize: '200% auto',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
@@ -211,27 +211,27 @@ export function HeroSection() {
             animation: 'shimmer 4s linear infinite',
           }}
         >
-          Crafting production ready SaaS applications that solve real business problems.
-          Specialized in React, Node.js, and scalable MongoDB architectures.
+          Building elegant SaaS applications that drive real business results.
+          Specialized in modern React, Node.js, and scalable cloud architectures.
         </motion.p>
 
-        {/* Location badges with luxury styling */}
+        {/* Location badges with modern styling */}
         <motion.div
           variants={fadeInUp}
           className="flex items-center justify-center gap-6 text-sm mb-10 flex-wrap"
         >
           <motion.div
             className="flex items-center gap-2 px-4 py-2 glassmorphism-luxury rounded-full"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(16, 185, 129, 0.3)' }}
           >
-            <MapPin size={16} className="text-blue-400" />
+            <MapPin size={16} className="text-brand-emerald" />
             <span className="text-slate-200 font-medium">London, UK (GMT)</span>
           </motion.div>
           <motion.div
             className="flex items-center gap-2 px-4 py-2 glassmorphism-luxury rounded-full"
-            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(244, 63, 94, 0.3)' }}
           >
-            <Globe size={16} className="text-luxury-gold" />
+            <Globe size={16} className="text-brand-rose" />
             <span className="text-slate-200 font-medium">US/EU Remote Welcome</span>
           </motion.div>
         </motion.div>
@@ -247,8 +247,8 @@ export function HeroSection() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-500" />
-            <div className="absolute inset-0 bg-gradient-to-r from-luxury-gold via-blue-500 to-luxury-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-emerald-dark via-brand-emerald to-brand-teal" />
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-rose via-brand-emerald to-brand-rose opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <motion.div
               className="absolute inset-0"
               animate={{
@@ -276,26 +276,26 @@ export function HeroSection() {
           </motion.a>
           <motion.a
             href="#contact"
-            className="px-10 py-4 glassmorphism-luxury rounded-xl font-semibold text-white border-2 border-luxury-gold/30 hover:border-luxury-gold/60 transition-all"
+            className="px-10 py-4 glassmorphism-luxury rounded-xl font-semibold text-white border-2 border-brand-rose/30 hover:border-brand-rose/60 transition-all"
             whileHover={{
               y: -3,
-              boxShadow: '0 10px 40px rgba(212, 175, 55, 0.3)',
+              boxShadow: '0 10px 40px rgba(244, 63, 94, 0.3)',
             }}
             whileTap={{ scale: 0.95 }}
           >
-            Let's Connect
+            Get in Touch
           </motion.a>
         </motion.div>
 
-        {/* Social icons with premium styling */}
+        {/* Social icons with modern styling */}
         <motion.div
           variants={fadeInUp}
           className="flex items-center justify-center gap-6 mb-20"
         >
           {[
-            { Icon: Github, href: profile.github, color: 'blue' },
-            { Icon: Linkedin, href: profile.linkedin, color: 'gold' },
-            { Icon: Mail, href: `mailto:${profile.email}`, color: 'cyan' },
+            { Icon: Github, href: profile.github, color: 'emerald' },
+            { Icon: Linkedin, href: profile.linkedin, color: 'rose' },
+            { Icon: Mail, href: `mailto:${profile.email}`, color: 'teal' },
           ].map(({ Icon, href, color }, i) => (
             <motion.a
               key={i}
@@ -306,13 +306,19 @@ export function HeroSection() {
               whileHover={{
                 y: -8,
                 scale: 1.2,
-                boxShadow: color === 'gold'
-                  ? '0 0 30px rgba(212, 175, 55, 0.6)'
-                  : '0 0 30px rgba(59, 130, 246, 0.6)',
+                boxShadow: color === 'rose'
+                  ? '0 0 30px rgba(244, 63, 94, 0.6)'
+                  : color === 'emerald'
+                  ? '0 0 30px rgba(16, 185, 129, 0.6)'
+                  : '0 0 30px rgba(20, 184, 166, 0.6)',
               }}
               whileTap={{ scale: 0.9 }}
             >
-              <Icon size={22} className={color === 'gold' ? 'text-luxury-gold' : 'text-blue-400'} />
+              <Icon size={22} className={
+                color === 'rose' ? 'text-brand-rose' :
+                color === 'emerald' ? 'text-brand-emerald' :
+                'text-brand-teal'
+              } />
             </motion.a>
           ))}
         </motion.div>
@@ -324,15 +330,15 @@ export function HeroSection() {
             className="inline-flex flex-col items-center gap-3 group"
             whileHover={{ y: 8 }}
           >
-            <span className="text-sm text-slate-400 group-hover:text-luxury-gold transition-colors font-medium">
-              Discover My Work
+            <span className="text-sm text-slate-400 group-hover:text-brand-emerald transition-colors font-medium">
+              View My Work
             </span>
             <motion.div
               className="p-2 glassmorphism-luxury rounded-full"
               animate={{
                 boxShadow: [
-                  '0 0 0 0 rgba(212, 175, 55, 0.4)',
-                  '0 0 0 10px rgba(212, 175, 55, 0)',
+                  '0 0 0 0 rgba(16, 185, 129, 0.4)',
+                  '0 0 0 10px rgba(16, 185, 129, 0)',
                 ],
               }}
               transition={{
@@ -340,7 +346,7 @@ export function HeroSection() {
                 repeat: Infinity,
               }}
             >
-              <ArrowDown size={20} className="text-luxury-gold" />
+              <ArrowDown size={20} className="text-brand-emerald" />
             </motion.div>
           </motion.a>
         </motion.div>
