@@ -25,7 +25,7 @@ export default function Home() {
           </h1>
           
           <p className="text-xl md:text-2xl text-slate-300 mb-4 max-w-3xl mx-auto leading-relaxed">
-            Building production-ready SaaS applications that solve real business problems.
+            Building production ready SaaS applications that solve real business problems.
             Specialized in React, Node.js, and scalable MongoDB architectures.
           </p>
           
@@ -126,8 +126,8 @@ export default function Home() {
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-4xl font-bold text-white mb-8 text-center">Building Software That Ships</h2>
           <div className="space-y-6 text-lg text-slate-300">
-            <p>I'm a full-stack developer focused on creating production-ready SaaS applications. My work spans the entire stack—from designing responsive React interfaces to architecting Node.js backends that handle real-world data at scale.</p>
-            <p>What sets me apart: I think like a product owner. Every technical decision I make considers user experience, business impact, and long-term maintainability.</p>
+            <p>I'm a full-stack developer focused on creating production ready SaaS applications. My work spans the entire stack from designing responsive React interfaces to architecting Node.js backends that handle real world data at scale.</p>
+            <p>What sets me apart: I think like a product owner. Every technical decision I make considers user experience, business impact, and long term maintainability.</p>
             <p>Based in London but built for remote work. I've managed full development cycles independently, documented my code for team collaboration, and deployed applications that real businesses use daily. Comfortable working across US and EU time zones.</p>
           </div>
         </div>
