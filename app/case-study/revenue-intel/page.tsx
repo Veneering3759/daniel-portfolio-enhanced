@@ -74,7 +74,7 @@ export default function RevenueIntelCaseStudy() {
         <div className="mb-8" style={{ borderTop: '1px solid var(--border)' }} />
 
         {/* Content */}
-        <div className="space-y-10">
+        <div className="space-y-8">
 
           <Section num="01" title="Overview">
             <p className="text-sm leading-relaxed text-slate-400">
@@ -111,9 +111,9 @@ export default function RevenueIntelCaseStudy() {
             </p>
             <ul className="space-y-2 mb-3">
               {[
-                'Stripe (source of truth) — subscription events flow out via webhooks',
-                'Next.js API routes — webhook handler, Stripe proxy routes, auth middleware',
-                'MongoDB — event log, derived subscription metrics, session store',
+                'Stripe (source of truth): subscription events flow out via webhooks',
+                'Next.js API routes: webhook handler, Stripe proxy routes, auth middleware',
+                'MongoDB: event log, derived subscription metrics, session store',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-emerald-500 mt-[7px] flex-shrink-0" />
@@ -176,7 +176,7 @@ export default function RevenueIntelCaseStudy() {
                 <li key={name} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-emerald-500 mt-[7px] flex-shrink-0" />
                   <span className="text-sm text-slate-400">
-                    <Code>{name}</Code> — {desc}
+                    <Code>{name}</Code>: {desc}
                   </span>
                 </li>
               ))}
@@ -239,7 +239,7 @@ export default function RevenueIntelCaseStudy() {
                 'Job queue for webhook processing (BullMQ or Mongo-backed) to decouple ingestion from processing and handle retries.',
                 'Application-layer event deduplication using Stripe event IDs beyond MongoDB _id uniqueness.',
                 'A reconciliation endpoint that diffs local state against Stripe API to catch missed webhooks.',
-                'CSV export for finance/accounting — the data is already there, just needs a serialization layer.',
+                'CSV export for finance/accounting. The data is already there; it just needs a serialization layer.',
                 'Test coverage for the webhook handler using stripe-mock for realistic event payloads.',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
@@ -254,7 +254,7 @@ export default function RevenueIntelCaseStudy() {
 
         {/* Footer nav */}
         <div
-          className="mt-12 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          className="mt-10 pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
           style={{ borderTop: '1px solid var(--border)' }}
         >
           <Link

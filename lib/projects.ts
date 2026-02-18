@@ -9,13 +9,13 @@ export const projects = [
     githubUrl: 'https://github.com/Veneering3759/revenue-intel',
     caseStudyUrl: '/case-study/revenue-intel',
     highlights: [
-      'Next.js App Router with TypeScript — server components for data fetching',
+      'Next.js App Router with TypeScript: server components for initial data loads',
       'Stripe integration: checkout, signed webhooks, billing portal, subscription lifecycle',
-      'All Stripe API calls proxied through server-side routes — no secrets exposed to client',
+      'All Stripe API calls proxied through server-side routes; no secrets in the client bundle',
       'MongoDB with compound indexes for efficient customer event history queries',
       'Webhook handler processes real-time events with signature verification',
       'Revenue forecasting calculator and funnel analytics with event tracking',
-      'Auth-protected dashboard via NextAuth.js — routes inaccessible without session',
+      'NextAuth.js session middleware protects all dashboard routes at the edge',
     ],
     tech: ['Next.js', 'TypeScript', 'Stripe', 'MongoDB', 'NextAuth.js', 'Tailwind CSS'],
     technicalDepth: {
@@ -66,7 +66,7 @@ export const projects = [
     highlights: [
       'Six integrated modules sharing a unified design system and interaction patterns',
       'Mobile-first responsive layout with Tailwind CSS breakpoints throughout',
-      'Framer Motion for micro-interactions — hover states and view transitions',
+      'Framer Motion for micro-interactions: hover states and view transitions',
     ],
     tech: ['Next.js', 'TypeScript', 'Framer Motion', 'Tailwind CSS'],
     technicalDepth: {

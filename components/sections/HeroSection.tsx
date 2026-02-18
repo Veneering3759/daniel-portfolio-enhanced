@@ -141,7 +141,7 @@ export function HeroSection() {
         </motion.div>
 
         {/* Social icons */}
-        <motion.div variants={fadeInUp} className="flex items-center justify-center gap-5 mb-12">
+        <motion.div variants={fadeInUp} className="flex items-center justify-center gap-5 mb-8">
           {[
             { Icon: Github,   href: profile.github },
             { Icon: Linkedin, href: profile.linkedin },
