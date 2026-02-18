@@ -9,60 +9,60 @@ export const metadata: Metadata = {
 
 export default function RevenueIntelCaseStudy() {
   return (
-    <main className="min-h-screen pt-24 pb-32" style={{ backgroundColor: 'var(--bg-base)' }}>
-      <div className="max-w-3xl mx-auto px-6">
+    <main className="min-h-screen pt-20 pb-16" style={{ backgroundColor: 'var(--bg-base)' }}>
+      <div className="max-w-2xl mx-auto px-5">
 
-        {/* Back link */}
+        {/* Back */}
         <Link
           href="/#projects"
-          className="inline-flex items-center gap-2 text-slate-400 hover:text-slate-200 text-sm transition-colors mb-12 group"
+          className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-300 text-sm mb-8 group transition-colors duration-150"
         >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+          <ArrowLeft size={14} className="group-hover:-translate-x-0.5 transition-transform duration-150" />
           Back to portfolio
         </Link>
 
-        {/* Project header */}
-        <header className="mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-violet-500/10 border border-violet-500/20 rounded-full text-violet-400 text-xs font-medium mb-6">
+        {/* Header */}
+        <header className="mb-8">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full border border-emerald-500/20 bg-emerald-500/[0.08] text-emerald-400 text-[11px] font-medium mb-4">
             SaaS / Stripe Analytics Platform
           </div>
 
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Revenue Intel
-          </h1>
-          <p className="text-xl text-slate-400 mb-8 leading-relaxed">
+          <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Revenue Intel</h1>
+          <p className="text-sm leading-relaxed mb-5 text-slate-400">
             A Stripe analytics dashboard that surfaces subscription churn signals,
             checkout drop-off, and pricing inefficiencies in a single auth-protected view.
           </p>
 
           {/* Action links */}
-          <div className="flex items-center gap-4 flex-wrap">
+          <div className="flex items-center gap-2 flex-wrap mb-5">
             <a
               href="https://revenue-intel.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white rounded-lg text-sm font-medium transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white rounded bg-emerald-600 hover:bg-emerald-500 transition-colors duration-150"
             >
-              <ExternalLink size={14} />
+              <ExternalLink size={11} />
               Live Demo
             </a>
             <a
               href="https://github.com/Veneering3759/revenue-intel"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-medium transition-colors border border-slate-700"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 hover:border-white/[0.14] transition-all duration-150"
+              style={{ border: '1px solid var(--border)' }}
             >
-              <Github size={14} />
+              <Github size={11} />
               GitHub
             </a>
           </div>
 
-          {/* Tech stack */}
-          <div className="flex flex-wrap gap-2 mt-8">
+          {/* Tech badges */}
+          <div className="flex flex-wrap gap-1.5">
             {['Next.js (App Router)', 'TypeScript', 'Stripe SDK', 'MongoDB', 'NextAuth.js', 'Tailwind CSS'].map((tech) => (
               <span
                 key={tech}
-                className="px-3 py-1 bg-slate-900 border border-slate-700 text-slate-300 text-xs rounded-full"
+                className="px-2 py-0.5 text-[11px] rounded text-slate-400"
+                style={{ backgroundColor: 'var(--bg-raised)', border: '1px solid var(--border)' }}
               >
                 {tech}
               </span>
@@ -71,259 +71,218 @@ export default function RevenueIntelCaseStudy() {
         </header>
 
         {/* Divider */}
-        <div className="border-t border-slate-800 mb-16" />
+        <div className="mb-8" style={{ borderTop: '1px solid var(--border)' }} />
 
-        {/* Case study content */}
-        <div className="space-y-16 prose prose-invert max-w-none">
+        {/* Content */}
+        <div className="space-y-10">
 
-          {/* Overview */}
-          <section>
-            <SectionLabel>01</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">Overview</h2>
-            <p className="text-slate-300 leading-relaxed">
+          <Section num="01" title="Overview">
+            <p className="text-sm leading-relaxed text-slate-400">
               Revenue Intel is a subscription analytics platform built to give SaaS operators
-              clearer visibility into their Stripe data. The core idea: rather than context-switching
-              between Stripe&apos;s native dashboard, spreadsheets, and third-party analytics tools,
-              operators get one focused view — churn risk signals, checkout funnel performance,
+              clearer visibility into their Stripe data. Rather than context-switching between
+              Stripe&apos;s native dashboard, spreadsheets, and third-party tools, operators
+              get one focused view — churn risk signals, checkout funnel performance,
               MRR trends, and pricing tier analysis.
             </p>
-            <p className="text-slate-300 leading-relaxed mt-4">
-              The project&apos;s primary goal was to get comfortable with Stripe&apos;s API surface:
+            <p className="text-sm leading-relaxed text-slate-400 mt-2">
+              The primary goal was to get comfortable with Stripe&apos;s API surface:
               webhook delivery, subscription lifecycle events, idempotency, and the billing portal.
               The dashboard layer was secondary — a useful way to make the backend work visible.
             </p>
-          </section>
+          </Section>
 
-          {/* The Problem */}
-          <section>
-            <SectionLabel>02</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">The Problem</h2>
-            <p className="text-slate-300 leading-relaxed">
+          <Section num="02" title="The Problem">
+            <p className="text-sm leading-relaxed text-slate-400">
               Stripe&apos;s dashboard is built for operators, not analysts. It surfaces individual
-              transactions well but makes it difficult to see patterns across your subscriber base:
+              transactions well but makes it difficult to see patterns across the subscriber base:
               which pricing tier has the highest churn rate, where users drop off during checkout,
               which plan they downgrade to before cancelling.
             </p>
-            <p className="text-slate-300 leading-relaxed mt-4">
+            <p className="text-sm leading-relaxed text-slate-400 mt-2">
               The data to answer these questions is all in Stripe — it just isn&apos;t surfaced in
               one place. Revenue Intel pulls it together by consuming Stripe&apos;s webhook stream
               and storing derived metrics in a queryable local database.
             </p>
-          </section>
+          </Section>
 
-          {/* Architecture Design */}
-          <section>
-            <SectionLabel>03</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">Architecture Design</h2>
-            <p className="text-slate-300 leading-relaxed">
+          <Section num="03" title="Architecture Design">
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
               The system has three layers:
             </p>
-            <ul className="mt-4 space-y-3">
+            <ul className="space-y-2 mb-3">
               {[
                 'Stripe (source of truth) — subscription events flow out via webhooks',
                 'Next.js API routes — webhook handler, Stripe proxy routes, auth middleware',
                 'MongoDB — event log, derived subscription metrics, session store',
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0" />
-                  <span className="text-slate-300">{item}</span>
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="w-1 h-1 rounded-full bg-emerald-500 mt-[7px] flex-shrink-0" />
+                  <span className="text-sm text-slate-400">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="text-slate-300 leading-relaxed mt-6">
-              Next.js App Router was chosen for its server component model — initial dashboard
-              loads fetch from MongoDB directly in server components, avoiding a client-side
-              loading state. Interactive filters and charts are client components that receive
-              initial data as props.
+            <p className="text-sm leading-relaxed text-slate-400">
+              Next.js App Router was chosen for its server component model — initial dashboard loads fetch
+              from MongoDB directly in server components. Interactive filters and charts are client
+              components that receive initial data as props. NextAuth.js session middleware blocks all{' '}
+              <Code>/dashboard/*</Code> routes at the edge before the page component renders.
             </p>
-            <p className="text-slate-300 leading-relaxed mt-4">
-              NextAuth.js session middleware runs at the edge and blocks all <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">/dashboard/*</code> routes
-              for unauthenticated users before the page component even renders.
-            </p>
-          </section>
+          </Section>
 
-          {/* Stripe Integration */}
-          <section>
-            <SectionLabel>04</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">Stripe Integration Approach</h2>
-            <p className="text-slate-300 leading-relaxed">
-              The Stripe Node SDK lives exclusively in server-side code — API routes and server
-              components. The secret key is read from environment variables server-side and never
-              exposed to the client bundle.
+          <Section num="04" title="Stripe Integration Approach">
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
+              The Stripe Node SDK lives exclusively in server-side code. The secret key is read from
+              environment variables server-side and never exposed to the client bundle.
             </p>
-
-            <h3 className="text-lg font-semibold text-slate-200 mt-6 mb-3">Webhook Handler</h3>
-            <p className="text-slate-300 leading-relaxed">
-              Incoming webhooks hit a dedicated <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">POST /api/webhooks/stripe</code> route.
-              The raw request body is passed to <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">stripe.webhooks.constructEvent()</code> along
-              with the <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">Stripe-Signature</code> header, which verifies the payload
-              using the webhook signing secret. Requests with invalid signatures are rejected with a 400.
+            <SubHeading>Webhook Handler</SubHeading>
+            <p className="text-sm leading-relaxed text-slate-400 mb-2">
+              Incoming webhooks hit <Code>POST /api/webhooks/stripe</Code>. The raw body is
+              passed to <Code>stripe.webhooks.constructEvent()</Code> with the{' '}
+              <Code>Stripe-Signature</Code> header. Invalid signatures return 400 immediately.
             </p>
-            <p className="text-slate-300 leading-relaxed mt-4">
-              Events handled: <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">customer.subscription.created</code>,{' '}
-              <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">customer.subscription.deleted</code>,{' '}
-              <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">invoice.payment_failed</code>,{' '}
-              <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">checkout.session.completed</code>,{' '}
-              <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">customer.subscription.updated</code>.
-            </p>
-
-            <h3 className="text-lg font-semibold text-slate-200 mt-6 mb-3">Billing Portal</h3>
-            <p className="text-slate-300 leading-relaxed">
-              The Stripe billing portal is surfaced through a server action that creates a portal
-              session and returns the URL to the client. This keeps the customer ID server-side
-              and avoids exposing it in client-side state.
-            </p>
-          </section>
-
-          {/* Data Modeling */}
-          <section>
-            <SectionLabel>05</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">Data Modeling Decisions</h2>
-            <p className="text-slate-300 leading-relaxed">
-              MongoDB was chosen for its flexible document model — Stripe webhook payloads
-              vary significantly by event type, and storing them in a relational schema would
-              require either a wide table with many nullable columns or a complex event-type
-              inheritance structure.
-            </p>
-
-            <h3 className="text-lg font-semibold text-slate-200 mt-6 mb-3">Collections</h3>
-            <ul className="space-y-3">
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
+              Events handled:{' '}
               {[
-                { name: 'stripe_events', desc: 'Raw webhook payloads. Stripe event ID used as _id for built-in deduplication. TTL index expires records after 90 days.' },
-                { name: 'subscriptions', desc: 'Derived subscription state. Upserted on each relevant webhook. Tracks plan, status, customer ID, and timestamps.' },
+                'customer.subscription.created',
+                'customer.subscription.deleted',
+                'invoice.payment_failed',
+                'checkout.session.completed',
+                'customer.subscription.updated',
+              ].map((e, i, arr) => (
+                <span key={e}>
+                  <Code>{e}</Code>{i < arr.length - 1 ? ', ' : ''}
+                </span>
+              ))}
+            </p>
+            <SubHeading>Billing Portal</SubHeading>
+            <p className="text-sm leading-relaxed text-slate-400">
+              Surfaced through a server action that creates a portal session and returns the URL
+              to the client — keeps the customer ID server-side.
+            </p>
+          </Section>
+
+          <Section num="05" title="Data Modeling Decisions">
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
+              MongoDB was chosen for its flexible document model — Stripe webhook payloads vary
+              significantly by event type.
+            </p>
+            <SubHeading>Collections</SubHeading>
+            <ul className="space-y-2 mb-3">
+              {[
+                { name: 'stripe_events',     desc: 'Raw webhook payloads. Stripe event ID as _id for deduplication. TTL index expires after 90 days.' },
+                { name: 'subscriptions',     desc: 'Derived subscription state. Upserted on each relevant webhook. Tracks plan, status, customer ID, timestamps.' },
                 { name: 'checkout_sessions', desc: 'Completed and abandoned session data for funnel analysis.' },
               ].map(({ name, desc }) => (
-                <li key={name} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0" />
-                  <span className="text-slate-300">
-                    <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">{name}</code>
-                    {' '}— {desc}
+                <li key={name} className="flex items-start gap-2.5">
+                  <span className="w-1 h-1 rounded-full bg-emerald-500 mt-[7px] flex-shrink-0" />
+                  <span className="text-sm text-slate-400">
+                    <Code>{name}</Code> — {desc}
                   </span>
                 </li>
               ))}
             </ul>
-
-            <p className="text-slate-300 leading-relaxed mt-6">
-              Compound index on <code className="text-violet-300 bg-slate-900 px-1.5 py-0.5 rounded text-sm">(customerId, createdAt)</code> in the subscriptions
-              collection covers the most common query pattern: fetching a customer&apos;s subscription
-              history in chronological order.
+            <p className="text-sm leading-relaxed text-slate-400">
+              Compound index on <Code>(customerId, createdAt)</Code> covers the most common
+              query pattern: fetching a customer&apos;s subscription history in order.
             </p>
-          </section>
+          </Section>
 
-          {/* Security */}
-          <section>
-            <SectionLabel>06</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">Security Considerations</h2>
-            <ul className="space-y-4">
+          <Section num="06" title="Security Considerations">
+            <ul className="space-y-3">
               {[
-                {
-                  point: 'Secret isolation',
-                  detail: 'The Stripe secret key and webhook signing secret are environment variables read exclusively in server-side code. Next.js\'s build process ensures they are never included in client bundles (variables without the NEXT_PUBLIC_ prefix are server-only).',
-                },
-                {
-                  point: 'Webhook signature verification',
-                  detail: 'Every inbound webhook is verified using Stripe\'s recommended stripe.webhooks.constructEvent() pattern before any processing occurs. Invalid signatures return 400 immediately.',
-                },
-                {
-                  point: 'Route protection',
-                  detail: 'NextAuth.js middleware runs before route handlers on all /dashboard/* paths. Unauthenticated requests are redirected to the login page at the middleware layer, not the component layer.',
-                },
-                {
-                  point: 'Minimal data storage',
-                  detail: 'No payment method details or raw card data are stored. Only Stripe customer IDs, subscription metadata, and event timestamps — the minimum needed to power the analytics.',
-                },
+                { point: 'Secret isolation',               detail: "Stripe secret key and webhook signing secret are server-only env vars. Next.js's build process never includes them in the client bundle." },
+                { point: 'Webhook signature verification',  detail: 'Every inbound webhook is verified with stripe.webhooks.constructEvent() before any processing. Invalid signatures return 400.' },
+                { point: 'Route protection',               detail: 'NextAuth.js middleware runs before route handlers on all /dashboard/* paths. Unauthenticated requests redirect at the middleware layer.' },
+                { point: 'Minimal data storage',           detail: 'No payment method details stored. Only Stripe customer IDs, subscription metadata, and event timestamps.' },
               ].map(({ point, detail }) => (
-                <li key={point} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-violet-400 mt-2 flex-shrink-0" />
-                  <span className="text-slate-300">
-                    <strong className="text-slate-200">{point}:</strong> {detail}
+                <li key={point} className="flex items-start gap-2.5">
+                  <span className="w-1 h-1 rounded-full bg-emerald-500 mt-[7px] flex-shrink-0" />
+                  <span className="text-sm text-slate-400">
+                    <strong className="text-slate-300">{point}:</strong> {detail}
                   </span>
                 </li>
               ))}
             </ul>
-          </section>
+          </Section>
 
-          {/* Tradeoffs */}
-          <section>
-            <SectionLabel>07</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">Tradeoffs Made</h2>
-            <div className="space-y-6">
+          <Section num="07" title="Tradeoffs Made">
+            <div className="space-y-3">
               {[
                 {
                   decision: 'Local cache vs. direct Stripe API',
-                  reasoning: 'Caching Stripe data in MongoDB reduces latency on dashboard loads and avoids hitting Stripe\'s rate limits under sustained query load. The tradeoff is synchronization complexity — if a webhook is missed, local state diverges from Stripe. Mitigated by a periodic reconciliation job that re-fetches the subscription list from Stripe\'s API.',
+                  reasoning: "Caching Stripe data in MongoDB reduces latency and avoids rate limits, but adds sync complexity. If a webhook is missed, local state diverges from Stripe — mitigated by a periodic reconciliation job.",
                 },
                 {
-                  decision: 'NextAuth.js vs. custom JWT implementation',
-                  reasoning: 'NextAuth handles a lot of session management complexity (CSRF protection, secure cookie handling, token rotation) that would take significant time to implement correctly from scratch. The tradeoff is reduced flexibility if custom auth flows are needed later.',
+                  decision: 'NextAuth.js vs. custom JWT',
+                  reasoning: 'NextAuth handles CSRF protection, secure cookies, and token rotation out of the box. The tradeoff is reduced flexibility for custom auth flows later.',
                 },
                 {
                   decision: 'Synchronous webhook processing',
-                  reasoning: 'Webhook events are processed synchronously in the API route handler. Simple and easy to reason about, but a slow database write could cause Stripe to retry the webhook delivery. The right fix is a proper job queue (BullMQ, or a simple MongoDB-backed queue), but that added scope wasn\'t justified at this stage.',
+                  reasoning: "Events are processed synchronously in the API route handler — simple to reason about, but a slow DB write could cause Stripe to retry delivery. The fix is a job queue, but that scope wasn't justified yet.",
                 },
               ].map(({ decision, reasoning }) => (
-                <div key={decision} className="p-5 bg-slate-900 rounded-xl border border-slate-800">
-                  <h3 className="text-slate-200 font-semibold mb-2">{decision}</h3>
-                  <p className="text-slate-400 text-sm leading-relaxed">{reasoning}</p>
+                <div
+                  key={decision}
+                  className="p-4 rounded-lg border"
+                  style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
+                >
+                  <h3 className="text-sm font-semibold text-slate-200 mb-1.5">{decision}</h3>
+                  <p className="text-xs leading-relaxed text-slate-400">{reasoning}</p>
                 </div>
               ))}
             </div>
-          </section>
+          </Section>
 
-          {/* What I Would Improve */}
-          <section>
-            <SectionLabel>08</SectionLabel>
-            <h2 className="text-2xl font-bold text-white mt-2 mb-4">What I Would Improve Next</h2>
-            <ul className="space-y-3">
+          <Section num="08" title="What I Would Improve Next">
+            <ul className="space-y-2">
               {[
-                'Job queue for webhook processing — BullMQ with Redis, or a Mongo-backed queue, to decouple ingestion from processing and handle retries properly.',
-                'Proper event deduplication at the application layer using Stripe event IDs, not just MongoDB\'s _id uniqueness constraint.',
-                'A reconciliation endpoint that diffs local subscription state against Stripe\'s API to catch any missed webhooks during downtime.',
-                'Export functionality (CSV) for finance/accounting use — the underlying data is there, just needs a serialization layer.',
-                'Test coverage for the webhook handler using Stripe\'s stripe-mock library for realistic event payloads.',
+                'Job queue for webhook processing (BullMQ or Mongo-backed) to decouple ingestion from processing and handle retries.',
+                'Application-layer event deduplication using Stripe event IDs beyond MongoDB _id uniqueness.',
+                'A reconciliation endpoint that diffs local state against Stripe API to catch missed webhooks.',
+                'CSV export for finance/accounting — the data is already there, just needs a serialization layer.',
+                'Test coverage for the webhook handler using stripe-mock for realistic event payloads.',
               ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-slate-600 mt-2 flex-shrink-0" />
-                  <span className="text-slate-400 text-sm leading-relaxed">{item}</span>
+                <li key={item} className="flex items-start gap-2.5">
+                  <span className="w-1 h-1 rounded-full bg-slate-700 mt-[7px] flex-shrink-0" />
+                  <span className="text-xs leading-relaxed text-slate-500">{item}</span>
                 </li>
               ))}
             </ul>
-          </section>
+          </Section>
 
         </div>
 
-        {/* Footer CTA */}
-        <div className="mt-20 pt-10 border-t border-slate-800">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div>
-              <p className="text-slate-400 text-sm">More of my work</p>
-              <Link
-                href="/#projects"
-                className="text-slate-200 font-medium hover:text-violet-400 transition-colors"
-              >
-                ← Back to all projects
-              </Link>
-            </div>
-            <div className="flex gap-3">
-              <a
-                href="https://revenue-intel.vercel.app"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg text-sm font-medium transition-colors"
-              >
-                <ExternalLink size={13} />
-                Live Demo
-              </a>
-              <a
-                href="https://github.com/Veneering3759/revenue-intel"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg text-sm font-medium transition-colors border border-slate-700"
-              >
-                <Github size={13} />
-                GitHub
-              </a>
-            </div>
+        {/* Footer nav */}
+        <div
+          className="mt-12 pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
+          style={{ borderTop: '1px solid var(--border)' }}
+        >
+          <Link
+            href="/#projects"
+            className="text-sm font-medium text-slate-400 hover:text-slate-200 transition-colors duration-150"
+          >
+            ← Back to all projects
+          </Link>
+          <div className="flex gap-2">
+            <a
+              href="https://revenue-intel.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white rounded bg-emerald-600 hover:bg-emerald-500 transition-colors duration-150"
+            >
+              <ExternalLink size={11} />
+              Live Demo
+            </a>
+            <a
+              href="https://github.com/Veneering3759/revenue-intel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded text-slate-400 hover:text-slate-200 transition-colors duration-150"
+              style={{ border: '1px solid var(--border)' }}
+            >
+              <Github size={11} />
+              GitHub
+            </a>
           </div>
         </div>
 
@@ -332,10 +291,32 @@ export default function RevenueIntelCaseStudy() {
   )
 }
 
-function SectionLabel({ children }: { children: string }) {
+/* ── Sub-components ───────────────────────────────────────────────────────── */
+function Section({ num, title, children }: { num: string; title: string; children: React.ReactNode }) {
   return (
-    <span className="text-xs font-mono text-slate-600 tracking-widest uppercase">
+    <section>
+      <span className="text-[10px] font-mono tracking-widest uppercase text-slate-600">{num}</span>
+      <h2 className="text-base font-bold text-white mt-1 mb-3">{title}</h2>
       {children}
-    </span>
+    </section>
+  )
+}
+
+function SubHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-400 mt-4 mb-2">
+      {children}
+    </p>
+  )
+}
+
+function Code({ children }: { children: React.ReactNode }) {
+  return (
+    <code
+      className="text-[11px] px-1.5 py-0.5 rounded font-mono text-emerald-400"
+      style={{ backgroundColor: 'var(--bg-raised)', border: '1px solid var(--border)' }}
+    >
+      {children}
+    </code>
   )
 }

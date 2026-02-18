@@ -22,78 +22,90 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const isInternalCaseStudy = project.caseStudyUrl.startsWith('/')
+  const isInternal = project.caseStudyUrl.startsWith('/')
 
   return (
     <motion.div
       variants={fadeInUp}
-      whileHover={{ y: -6, transition: { duration: 0.2, ease: 'easeOut' } }}
-      className="relative group h-full"
+      whileHover={{ y: -4, transition: { duration: 0.18, ease: 'easeOut' } }}
+      className="h-full"
     >
-      {/* Card */}
       <div
-        className="h-full flex flex-col rounded-xl overflow-hidden border transition-all duration-200"
+        className="h-full flex flex-col rounded-lg overflow-hidden border transition-colors duration-200"
         style={{
           backgroundColor: 'var(--bg-raised)',
           borderColor: 'var(--border)',
           boxShadow: 'var(--shadow-card)',
         }}
       >
-        {/* Header gradient strip */}
-        <div className={`relative h-28 flex-shrink-0 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-          <div className="absolute inset-0 bg-slate-950/40" />
-          <div className="absolute inset-0 grid-pattern opacity-30" />
-
-          {/* Flagship badge */}
+        {/* Colour strip header */}
+        <div className={`relative h-16 flex-shrink-0 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+          <div className="absolute inset-0 bg-slate-950/55" />
           {project.flagship && (
-            <div className="absolute top-3 left-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-950/80 border border-violet-500/30 text-violet-300 text-xs font-medium rounded-full backdrop-blur-sm">
+            <div className="absolute top-2.5 left-3">
+              <span
+                className="inline-flex items-center gap-1.5 px-2 py-0.5 text-[10px] font-medium rounded-full border"
+                style={{
+                  backgroundColor: 'rgba(13,17,23,0.85)',
+                  borderColor: 'rgba(167,139,250,0.3)',
+                  color: '#c4b5fd',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
                 <span className="w-1 h-1 rounded-full bg-violet-400 inline-block" />
                 Flagship
               </span>
             </div>
           )}
-
-          {/* Category label */}
-          <div className="absolute bottom-3 left-3">
-            <span className="text-xs text-white/60 font-medium">{project.id}</span>
-          </div>
         </div>
 
         {/* Body */}
-        <div className="p-6 flex flex-col flex-1">
+        <div className="p-5 flex flex-col flex-1">
           <div className="flex-1">
-            {/* Title + tagline */}
-            <h3 className="text-lg font-bold text-white mb-1 group-hover:text-emerald-400 transition-colors duration-150">
+            {/* Title + category */}
+            <h3
+              className="text-base font-bold text-white mb-0.5 transition-colors duration-150 group-hover:text-emerald-400"
+            >
               {project.title}
             </h3>
-            <p className="text-xs text-slate-500 font-medium mb-3 uppercase tracking-wide">
+            <p
+              className="text-[11px] font-medium uppercase tracking-wide mb-3"
+              style={{ color: 'var(--text-muted)' }}
+            >
               {project.tagline}
             </p>
 
             {/* Description */}
-            <p className="text-sm text-slate-400 mb-4 leading-relaxed">
+            <p
+              className="text-sm mb-3 leading-relaxed"
+              style={{ color: 'var(--text-secondary)' }}
+            >
               {project.description}
             </p>
 
             {/* Highlights */}
-            <ul className="space-y-1.5 mb-5">
-              {project.highlights.map((highlight, i) => (
+            <ul className="space-y-1 mb-3">
+              {project.highlights.map((h, i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <span className="w-1 h-1 rounded-full bg-emerald-500/60 mt-1.5 flex-shrink-0" />
-                  <span className="text-xs text-slate-400 leading-snug">{highlight}</span>
+                  <span
+                    className="w-1 h-1 rounded-full mt-[7px] flex-shrink-0"
+                    style={{ backgroundColor: 'var(--accent)' }}
+                  />
+                  <span className="text-xs leading-snug" style={{ color: 'var(--text-secondary)' }}>
+                    {h}
+                  </span>
                 </li>
               ))}
             </ul>
 
             {/* Tech badges */}
-            <div className="flex flex-wrap gap-1.5 mb-5">
+            <div className="flex flex-wrap gap-1 mb-3">
               {project.tech.map((tech) => (
                 <span
                   key={tech}
-                  className="px-2 py-0.5 text-xs rounded font-medium"
+                  className="px-2 py-0.5 text-[11px] rounded font-medium"
                   style={{
-                    backgroundColor: 'var(--bg-input)',
+                    backgroundColor: 'rgba(255,255,255,0.05)',
                     border: '1px solid var(--border)',
                     color: 'var(--text-secondary)',
                   }}
@@ -104,21 +116,21 @@ export function ProjectCard({ project }: ProjectCardProps) {
             </div>
           </div>
 
-          {/* Action buttons */}
+          {/* Actions */}
           <div
-            className="flex items-center gap-2 pt-4 border-t mt-auto"
+            className="flex items-center gap-2 pt-3 mt-auto border-t"
             style={{ borderColor: 'var(--border)' }}
           >
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white rounded-md transition-colors duration-150"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] font-medium text-white rounded transition-colors duration-150"
               style={{ backgroundColor: 'var(--accent)' }}
               onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#0EA572')}
               onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--accent)')}
             >
-              <ExternalLink size={12} />
+              <ExternalLink size={11} />
               Live Demo
             </a>
 
@@ -126,11 +138,11 @@ export function ProjectCard({ project }: ProjectCardProps) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-md transition-all duration-150"
+              className="inline-flex items-center gap-1.5 px-2.5 py-1.5 text-[11px] font-medium rounded transition-all duration-150"
               style={{
-                backgroundColor: 'transparent',
                 border: '1px solid var(--border)',
                 color: 'var(--text-secondary)',
+                backgroundColor: 'transparent',
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)'
@@ -143,14 +155,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 e.currentTarget.style.backgroundColor = 'transparent'
               }}
             >
-              <Github size={12} />
+              <Github size={11} />
               Code
             </a>
 
-            {isInternalCaseStudy ? (
+            {isInternal ? (
               <Link
                 href={project.caseStudyUrl}
-                className="ml-auto text-xs text-emerald-500 hover:text-emerald-400 font-medium transition-colors duration-150 inline-flex items-center gap-1"
+                className="ml-auto text-[11px] font-medium transition-colors duration-150"
+                style={{ color: 'var(--accent)' }}
+                onMouseEnter={e => (e.currentTarget.style.opacity = '0.75')}
+                onMouseLeave={e => (e.currentTarget.style.opacity = '1')}
               >
                 Case Study →
               </Link>
@@ -159,7 +174,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 href={project.caseStudyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="ml-auto text-xs font-medium transition-colors duration-150 inline-flex items-center gap-1"
+                className="ml-auto text-[11px] font-medium transition-colors duration-150"
                 style={{ color: 'var(--text-muted)' }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-secondary)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}

@@ -2,52 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ─── Design Tokens ──────────────────────────────────────────────────────────
-   Single source of truth for all visual decisions.
-   Components reference these variables for consistency.
+/* ─── Design Tokens ───────────────────────────────────────────────────────────
+   All visual decisions flow from here.
+   Never reach for ad-hoc bg-slate-* or hard-coded colors in components.
 ────────────────────────────────────────────────────────────────────────────── */
 :root {
-  /* Backgrounds */
-  --bg-base:    #0D1117;   /* page background — very dark navy, not pure black */
-  --bg-surface: #131C2B;   /* section alternation */
-  --bg-raised:  #1A2235;   /* cards */
-  --bg-input:   #1C2640;   /* input / badge bg */
+  /* Backgrounds — layered from darkest to lightest */
+  --bg-base:    #0D1117;   /* page base */
+  --bg-surface: #111827;   /* alternate sections */
+  --bg-raised:  #1A2235;   /* cards, inputs, badges */
 
   /* Borders */
   --border:        rgba(255, 255, 255, 0.07);
   --border-subtle: rgba(255, 255, 255, 0.04);
-  --border-accent: rgba(16, 185, 129, 0.18);
+  --border-accent: rgba(16, 185, 129, 0.20);
 
-  /* Text */
-  --text-primary:   #F1F5F9;  /* slate-100 */
-  --text-secondary: #94A3B8;  /* slate-400 */
-  --text-muted:     #4B5563;  /* gray-600 */
+  /* Text hierarchy */
+  --text-primary:   #F1F5F9;   /* headings, important labels */
+  --text-secondary: #94A3B8;   /* body, descriptions */
+  --text-muted:     #4B5563;   /* timestamps, micro-labels */
 
-  /* Accent — emerald only */
+  /* Accent — single emerald, used sparingly */
   --accent:     #10B981;
-  --accent-dim: rgba(16, 185, 129, 0.12);
-  --accent-mid: rgba(16, 185, 129, 0.20);
+  --accent-dim: rgba(16, 185, 129, 0.10);
+  --accent-mid: rgba(16, 185, 129, 0.18);
 
-  /* Radii */
-  --radius-sm:   0.5rem;
-  --radius-md:   0.75rem;
-  --radius-lg:   1rem;
-  --radius-full: 9999px;
+  /* Radii — consistent set */
+  --radius-sm:   0.375rem;
+  --radius-md:   0.625rem;
+  --radius-lg:   0.875rem;
 
-  /* Shadows */
-  --shadow-card:       0 1px 2px rgba(0,0,0,0.6), 0 4px 16px rgba(0,0,0,0.3);
-  --shadow-card-hover: 0 4px 8px rgba(0,0,0,0.6), 0 12px 32px rgba(0,0,0,0.4);
+  /* Elevation */
+  --shadow-card:       0 1px 2px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.25);
+  --shadow-card-hover: 0 2px 4px rgba(0,0,0,0.5), 0 8px 24px rgba(0,0,0,0.35);
 
-  /* Transitions */
+  /* Transitions — keep everything subtle */
   --t-fast: 150ms ease;
   --t-base: 200ms ease;
 }
 
-/* ─── Base ───────────────────────────────────────────────────────────────── */
+/* ─── Base ────────────────────────────────────────────────────────────────── */
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
+  html { scroll-behavior: smooth; }
 
   body {
     background-color: var(--bg-base);
@@ -55,64 +51,44 @@
     @apply antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-bold;
-  }
+  h1, h2, h3, h4, h5, h6 { @apply font-bold; }
 }
 
-/* ─── Utilities ──────────────────────────────────────────────────────────── */
+/* ─── Utilities ───────────────────────────────────────────────────────────── */
 @layer utilities {
 
-  /* Accent text gradient — emerald only, no rose, subtle */
+  /* Accent gradient — emerald only */
   .text-gradient-luxury {
-    background: linear-gradient(
-      135deg,
-      #10B981 0%,
-      #34D399 40%,
-      #10B981 100%
-    );
+    background: linear-gradient(135deg, #10B981 0%, #34D399 50%, #10B981 100%);
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
-  /* Secondary gradient — kept for minor use */
-  .text-gradient {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #34D399, #10B981);
-  }
+  /* Aliases kept so legacy references don't break */
+  .text-gradient        { @apply text-emerald-400; }
+  .text-gradient-gold   { @apply text-emerald-400; }
+  .text-gradient-purple { @apply text-slate-300;   }
 
-  /* Removed: text-gradient-gold, text-gradient-purple (no longer used) */
-  /* Kept as no-op alias so any remaining references don't break */
-  .text-gradient-gold {
-    @apply text-emerald-400;
-  }
-  .text-gradient-purple {
-    @apply text-slate-300;
-  }
-
-  /* ── Glass surfaces ─────────────────────────────────────────────────── */
+  /* Glass */
   .glassmorphism {
     background: rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(16px);
     border: 1px solid var(--border);
   }
-
+  .glassmorphism-luxury {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border);
+  }
   .glassmorphism-strong {
     background: rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(24px);
     border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
-  /* Simplified — emerald tint only, no rose */
-  .glassmorphism-luxury {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(16px);
-    border: 1px solid var(--border);
-  }
-
-  /* ── Card ────────────────────────────────────────────────────────────── */
+  /* Card */
   .card {
     background-color: var(--bg-raised);
     border: 1px solid var(--border);
@@ -120,78 +96,69 @@
     box-shadow: var(--shadow-card);
     transition: box-shadow var(--t-base), border-color var(--t-base), transform var(--t-base);
   }
-
   .card:hover {
     box-shadow: var(--shadow-card-hover);
-    border-color: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.11);
   }
 
-  /* Legacy alias — keeps existing luxury-card references working */
+  /* Legacy alias */
   .luxury-card {
     background-color: var(--bg-raised);
     border: 1px solid var(--border);
     box-shadow: var(--shadow-card);
   }
 
-  /* ── Buttons ──────────────────────────────────────────────────────────── */
+  /* Buttons */
   .btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
     background-color: var(--accent);
     color: #fff;
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     border-radius: var(--radius-sm);
     border: 1px solid transparent;
     transition: background-color var(--t-fast), transform var(--t-fast);
     cursor: pointer;
   }
-
   .btn-primary:hover {
-    background-color: #0EA572; /* emerald-600 slightly brighter */
+    background-color: #0EA572;
     transform: translateY(-1px);
   }
 
   .btn-secondary {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.625rem 1.25rem;
+    gap: 0.375rem;
+    padding: 0.5rem 1rem;
     background-color: transparent;
     color: var(--text-secondary);
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     border-radius: var(--radius-sm);
     border: 1px solid var(--border);
     transition: background-color var(--t-fast), border-color var(--t-fast), color var(--t-fast);
     cursor: pointer;
   }
-
   .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.14);
+    background-color: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.12);
     color: var(--text-primary);
   }
 
-  /* ── Backgrounds ─────────────────────────────────────────────────────── */
-
-  /* Single soft emerald radial glow — replaces noisy 4-corner mesh */
+  /* Backgrounds */
   .gradient-mesh {
     background: radial-gradient(
-      ellipse 80% 60% at 50% -10%,
-      rgba(16, 185, 129, 0.06) 0%,
-      transparent 70%
+      ellipse 80% 50% at 50% -10%,
+      rgba(16, 185, 129, 0.05) 0%,
+      transparent 65%
     );
   }
-
-  /* Static very-faint tint — replaces animated 4-color gradient */
   .gradient-bg-animated {
-    background: rgba(16, 185, 129, 0.03);
+    background: rgba(16, 185, 129, 0.025);
   }
-
-  /* Grid — reduced to barely perceptible */
   .grid-pattern {
     background-image:
       linear-gradient(var(--border-subtle) 1px, transparent 1px),
@@ -199,11 +166,8 @@
     background-size: 64px 64px;
   }
 
-  /* ── Gradient border (kept for project card header) ─────────────────── */
-  .gradient-border {
-    position: relative;
-  }
-
+  /* Gradient border (emerald) */
+  .gradient-border { position: relative; }
   .gradient-border::before {
     content: '';
     position: absolute;
@@ -215,66 +179,42 @@
     -webkit-mask-composite: xor;
     mask-composite: exclude;
   }
-
-  /* ── Shimmer (kept, used sparingly) ─────────────────────────────────── */
-  .shimmer-text {
-    background: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.75) 0%,
-      rgba(255, 255, 255, 1) 50%,
-      rgba(255, 255, 255, 0.75) 100%
-    );
-    background-size: 200% auto;
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
 }
 
-/* ─── Prose (case study page) ────────────────────────────────────────────── */
+/* ─── Prose (case study) ──────────────────────────────────────────────────── */
 .prose h2 {
-  @apply text-2xl font-bold mt-12 mb-5 text-white;
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
 }
-
 .prose h3 {
-  @apply text-lg font-semibold mt-8 mb-3 text-slate-200;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
 }
-
 .prose p {
-  @apply text-slate-300 leading-relaxed mb-4;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 0.875rem;
 }
-
-.prose ul {
-  @apply space-y-2 mb-6;
-}
-
-.prose li {
-  @apply text-slate-300;
-}
-
-.prose strong {
-  @apply text-white font-semibold;
-}
+.prose ul  { margin-bottom: 1rem; }
+.prose li  { color: var(--text-secondary); }
+.prose strong { color: var(--text-primary); font-weight: 600; }
 
 /* ─── Scrollbar ───────────────────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--bg-base);
-}
-
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg-base); }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.09);
   border-radius: 9999px;
 }
-
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
+::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.16); }
 
 ::selection {
-  background: rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.30);
   color: #fff;
 }

@@ -7,14 +7,17 @@ import { fadeInUp, staggerContainer } from '../animations/variants'
 
 export function ProjectsSection() {
   return (
-    <section id="projects" className="py-24 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-surface)' }}>
-      {/* Subtle top separator */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+    <section
+      id="projects"
+      className="py-16 relative"
+      style={{ backgroundColor: 'var(--bg-surface)' }}
+    >
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }} />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6">
-        {/* Section header */}
+      <div className="max-w-6xl mx-auto px-5">
+        {/* Header */}
         <motion.div
-          className="mb-16"
+          className="mb-8"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
@@ -22,29 +25,33 @@ export function ProjectsSection() {
         >
           <motion.p
             variants={fadeInUp}
-            className="text-xs font-semibold text-emerald-500 tracking-widest uppercase mb-3"
+            className="text-xs font-semibold tracking-widest uppercase mb-2"
+            style={{ color: 'var(--accent)' }}
           >
             Featured Work
           </motion.p>
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-2xl md:text-3xl font-bold text-white mb-2"
           >
             Selected{' '}
             <span className="text-gradient-luxury">Projects</span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="text-slate-400 max-w-xl">
-            Full-stack applications built from concept to deployment.
-            Each project includes a technical breakdown of the decisions made.
+          <motion.p
+            variants={fadeInUp}
+            className="text-sm max-w-lg"
+            style={{ color: 'var(--text-secondary)' }}
+          >
+            Full-stack applications built from concept to deployment, each with a technical breakdown.
           </motion.p>
         </motion.div>
 
-        {/* Projects grid */}
+        {/* Grid */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-stretch"
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.05 }}
           variants={staggerContainer}
         >
           {projects.map((project) => (

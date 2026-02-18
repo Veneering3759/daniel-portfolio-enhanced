@@ -5,21 +5,23 @@ interface SkillBadgeProps {
   category: 'frontend' | 'backend' | 'tools'
 }
 
-const categoryStyles = {
-  frontend: 'text-blue-300   border-blue-500/15   hover:border-blue-400/30   hover:text-blue-200',
-  backend:  'text-violet-300 border-violet-500/15 hover:border-violet-400/30 hover:text-violet-200',
-  tools:    'text-emerald-300 border-emerald-500/15 hover:border-emerald-400/30 hover:text-emerald-200',
-}
-
-export function SkillBadge({ skill, category }: SkillBadgeProps) {
+export function SkillBadge({ skill }: SkillBadgeProps) {
   return (
     <span
-      className={`
-        px-3 py-1.5 rounded-full text-xs font-medium border
-        transition-colors duration-150 cursor-default
-        ${categoryStyles[category]}
-      `}
-      style={{ backgroundColor: 'var(--bg-input)' }}
+      className="inline-block px-2.5 py-1 text-[11px] font-medium rounded border transition-colors duration-150 cursor-default"
+      style={{
+        backgroundColor: 'rgba(255,255,255,0.04)',
+        borderColor: 'var(--border)',
+        color: 'var(--text-secondary)',
+      }}
+      onMouseEnter={e => {
+        e.currentTarget.style.borderColor = 'rgba(255,255,255,0.13)'
+        e.currentTarget.style.color = 'var(--text-primary)'
+      }}
+      onMouseLeave={e => {
+        e.currentTarget.style.borderColor = 'var(--border)'
+        e.currentTarget.style.color = 'var(--text-secondary)'
+      }}
     >
       {skill}
     </span>

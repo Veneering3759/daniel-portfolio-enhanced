@@ -6,34 +6,41 @@ import { Code2, Globe2, Layers } from 'lucide-react'
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-24 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-surface)' }}>
-      {/* Subtle top separator */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
+    <section
+      id="about"
+      className="py-16 relative"
+      style={{ backgroundColor: 'var(--bg-surface)' }}
+    >
+      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }} />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6">
+      <div className="max-w-3xl mx-auto px-5">
         <motion.div
           initial="initial"
           whileInView="animate"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
           variants={staggerContainer}
         >
           {/* Header */}
           <motion.p
             variants={fadeInUp}
-            className="text-xs font-semibold text-emerald-500 tracking-widest uppercase mb-3"
+            className="text-xs font-semibold tracking-widest uppercase mb-2"
+            style={{ color: 'var(--accent)' }}
           >
             About
           </motion.p>
           <motion.h2
             variants={fadeInUp}
-            className="text-3xl md:text-4xl font-bold mb-10"
+            className="text-2xl md:text-3xl font-bold mb-6"
           >
             <span className="text-white">Building with </span>
             <span className="text-gradient-luxury">purpose and clarity</span>
           </motion.h2>
 
-          {/* Body */}
-          <div className="space-y-4 text-[15px] text-slate-400 mb-10 leading-relaxed">
+          {/* Body copy */}
+          <div
+            className="space-y-3 text-sm mb-6 leading-relaxed"
+            style={{ color: 'var(--text-secondary)' }}
+          >
             <motion.p variants={fadeInUp}>
               Self-taught full-stack developer based in London. I came to programming through
               deliberate self-study — Coursera, freeCodeCamp, and building real projects from
@@ -52,15 +59,23 @@ export function AboutSection() {
 
             <motion.div
               variants={fadeInUp}
-              className="p-4 rounded-lg border-l-2 border-emerald-500/40"
-              style={{ backgroundColor: 'var(--bg-raised)', borderRightColor: 'var(--border)' }}
+              className="p-4 rounded-lg border-l-2 text-sm"
+              style={{
+                backgroundColor: 'var(--bg-raised)',
+                borderLeftColor: 'var(--accent)',
+                borderRightColor: 'var(--border)',
+                borderTopColor: 'var(--border)',
+                borderBottomColor: 'var(--border)',
+                border: '1px solid var(--border)',
+                borderLeft: '2px solid var(--accent)',
+              }}
             >
-              <p>
-                <span className="text-slate-200 font-medium">Current focus:</span>{' '}
-                Stripe integrations, subscription data modeling, and building analytics layers
-                on top of payment APIs. Interested in roles where I can work across the full
-                stack with clear product context.
-              </p>
+              <span className="font-medium" style={{ color: 'var(--text-primary)' }}>
+                Current focus:
+              </span>{' '}
+              Stripe integrations, subscription data modeling, and building analytics layers
+              on top of payment APIs. Interested in roles where I can work across the full
+              stack with clear product context.
             </motion.div>
 
             <motion.p variants={fadeInUp}>
@@ -73,26 +88,31 @@ export function AboutSection() {
           {/* Stat cards */}
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-3 gap-3"
           >
             {[
-              { Icon: Code2,   color: 'text-blue-400',    label: 'Full Stack',   sub: 'Frontend to API to database' },
-              { Icon: Layers,  color: 'text-emerald-400', label: 'Architecture', sub: 'Thoughtful about tradeoffs'  },
-              { Icon: Globe2,  color: 'text-slate-400',   label: 'Remote',       sub: 'London GMT · US/EU welcome'  },
-            ].map(({ Icon, color, label, sub }) => (
+              { Icon: Code2,  label: 'Full Stack',   sub: 'Frontend to API to database'  },
+              { Icon: Layers, label: 'Architecture',  sub: 'Thoughtful about tradeoffs'   },
+              { Icon: Globe2, label: 'Remote',        sub: 'London GMT · US/EU welcome'   },
+            ].map(({ Icon, label, sub }) => (
               <motion.div
                 key={label}
                 variants={fadeInUp}
-                whileHover={{ y: -4, transition: { duration: 0.15 } }}
-                className="p-5 rounded-xl border text-center cursor-default transition-colors duration-150"
-                style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
+                whileHover={{ y: -3, transition: { duration: 0.15 } }}
+                className="p-4 rounded-lg border text-center cursor-default"
+                style={{
+                  backgroundColor: 'var(--bg-raised)',
+                  borderColor: 'var(--border)',
+                }}
               >
-                <div className={`inline-flex p-2 rounded-lg mb-3 ${color} bg-current/10`}
-                  style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}>
-                  <Icon size={18} className={color} />
+                <div
+                  className="inline-flex p-2 rounded-md mb-2"
+                  style={{ backgroundColor: 'rgba(255,255,255,0.05)' }}
+                >
+                  <Icon size={16} style={{ color: 'var(--text-secondary)' }} />
                 </div>
-                <div className="text-base font-semibold text-white mb-1">{label}</div>
-                <div className="text-xs text-slate-500">{sub}</div>
+                <div className="text-sm font-semibold text-white mb-0.5">{label}</div>
+                <div className="text-xs" style={{ color: 'var(--text-muted)' }}>{sub}</div>
               </motion.div>
             ))}
           </motion.div>
