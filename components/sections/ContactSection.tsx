@@ -7,99 +7,62 @@ import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-32 bg-slate-950 relative overflow-hidden">
-      {/* Luxury background */}
-      <div className="absolute inset-0 gradient-mesh opacity-30" />
-      <div className="absolute inset-0 grid-pattern" />
+    <section id="contact" className="py-24 relative overflow-hidden" style={{ backgroundColor: 'var(--bg-base)' }}>
+      {/* Subtle top separator */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
-      {/* Radial glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-emerald/10 rounded-full blur-3xl animate-pulse-slow" />
-
-      <div className="relative z-10 max-w-4xl mx-auto px-6">
+      <div className="relative z-10 max-w-3xl mx-auto px-6">
         <motion.div
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.3 }}
           variants={staggerContainer}
         >
-          {/* Premium header */}
-          <motion.div className="text-center mb-16">
-            <motion.div
-              variants={fadeInUp}
-              className="inline-flex items-center gap-2 px-4 py-2 glassmorphism-luxury rounded-full mb-6"
-            >
-              <motion.div
-                className="w-2 h-2 bg-brand-emerald rounded-full"
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [1, 0.6, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              />
-              <span className="text-brand-emerald text-sm font-semibold">Let&apos;s Collaborate</span>
-            </motion.div>
-
-            <motion.h2
-              variants={fadeInUp}
-              className="text-4xl md:text-5xl font-bold mb-4"
-            >
-              <span className="text-white">Let&apos;s </span>
-              <span className="text-gradient-luxury">Work Together</span>
-            </motion.h2>
-
+          {/* Header */}
+          <motion.div className="mb-12">
             <motion.p
               variants={fadeInUp}
-              className="text-xl text-slate-300 max-w-2xl mx-auto"
+              className="text-xs font-semibold text-emerald-500 tracking-widest uppercase mb-3"
             >
+              Contact
+            </motion.p>
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl md:text-4xl font-bold text-white mb-3"
+            >
+              Get in Touch
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="text-slate-400">
               Looking for my first full-time developer role to build production applications
             </motion.p>
           </motion.div>
 
-          {/* Premium contact cards */}
+          {/* Contact cards */}
           <motion.div
             variants={staggerContainer}
-            className="grid md:grid-cols-2 gap-6 mb-10"
+            className="grid sm:grid-cols-2 gap-4 mb-6"
           >
-            {/* Email card - Featured */}
+            {/* Email — spans full width */}
             <motion.a
               href={`mailto:${profile.email}`}
               variants={fadeInUp}
-              whileHover={{
-                y: -8,
-                scale: 1.02,
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="md:col-span-2 p-8 luxury-card rounded-xl group cursor-pointer border-2 border-brand-emerald/30 hover:border-brand-emerald/60 transition-all relative overflow-hidden"
+              whileHover={{ y: -4, transition: { duration: 0.15 } }}
+              className="sm:col-span-2 p-5 rounded-xl border flex items-center gap-4 group transition-colors duration-150"
+              style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-brand-emerald/5 opacity-0 group-hover:opacity-100 transition-opacity"
-              />
-              <div className="relative z-10 flex items-center gap-4">
-                <motion.div
-                  className="p-4 rounded-xl bg-brand-emerald/10 group-hover:bg-brand-emerald/20 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Mail size={28} className="text-brand-emerald" />
-                </motion.div>
-                <div className="flex-1">
-                  <p className="text-slate-400 text-sm mb-1">Email</p>
-                  <p className="text-white font-semibold text-lg group-hover:text-brand-emerald transition-colors">
-                    {profile.email}
-                  </p>
-                </div>
-                <motion.div
-                  className="text-brand-emerald"
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  →
-                </motion.div>
+              <div
+                className="p-3 rounded-lg flex-shrink-0"
+                style={{ backgroundColor: 'var(--accent-dim)', border: '1px solid var(--border-accent)' }}
+              >
+                <Mail size={20} className="text-emerald-400" />
               </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-slate-500 mb-0.5">Email</p>
+                <p className="text-white font-medium text-sm truncate group-hover:text-emerald-400 transition-colors duration-150">
+                  {profile.email}
+                </p>
+              </div>
+              <span className="text-slate-600 group-hover:text-emerald-500 transition-colors duration-150">→</span>
             </motion.a>
 
             {/* GitHub */}
@@ -108,27 +71,18 @@ export function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
               variants={fadeInUp}
-              whileHover={{
-                y: -6,
-                boxShadow: '0 0 40px rgba(59, 130, 246, 0.3)',
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="p-6 luxury-card rounded-xl group cursor-pointer hover:border-blue-400/30 transition-all"
+              whileHover={{ y: -4, transition: { duration: 0.15 } }}
+              className="p-5 rounded-xl border flex items-center gap-3 group transition-colors duration-150"
+              style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <motion.div
-                  className="p-3 rounded-lg bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Github size={20} className="text-blue-400" />
-                </motion.div>
-                <div>
-                  <p className="text-slate-500 text-xs">GitHub</p>
-                  <p className="text-white font-medium group-hover:text-blue-400 transition-colors">
-                    @Veneering3759
-                  </p>
-                </div>
+              <div className="p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.07]">
+                <Github size={18} className="text-slate-400 group-hover:text-slate-200 transition-colors duration-150" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 mb-0.5">GitHub</p>
+                <p className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors duration-150">
+                  @Veneering3759
+                </p>
               </div>
             </motion.a>
 
@@ -138,95 +92,48 @@ export function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
               variants={fadeInUp}
-              whileHover={{
-                y: -6,
-                boxShadow: '0 0 40px rgba(59, 130, 246, 0.3)',
-              }}
-              whileTap={{ scale: 0.98 }}
-              className="p-6 luxury-card rounded-xl group cursor-pointer hover:border-blue-400/30 transition-all"
+              whileHover={{ y: -4, transition: { duration: 0.15 } }}
+              className="p-5 rounded-xl border flex items-center gap-3 group transition-colors duration-150"
+              style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
             >
-              <div className="flex items-center gap-3 mb-3">
-                <motion.div
-                  className="p-3 rounded-lg bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <Linkedin size={20} className="text-blue-400" />
-                </motion.div>
-                <div>
-                  <p className="text-slate-500 text-xs">LinkedIn</p>
-                  <p className="text-white font-medium group-hover:text-blue-400 transition-colors">
-                    Daniel Aryee
-                  </p>
-                </div>
+              <div className="p-2.5 rounded-lg bg-white/[0.04] border border-white/[0.07]">
+                <Linkedin size={18} className="text-slate-400 group-hover:text-slate-200 transition-colors duration-150" />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 mb-0.5">LinkedIn</p>
+                <p className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors duration-150">
+                  Daniel Aryee
+                </p>
               </div>
             </motion.a>
-
-            {/* Location */}
-            <motion.div
-              variants={fadeInUp}
-              whileHover={{ y: -6, scale: 1.02 }}
-              className="p-6 luxury-card rounded-xl border-2 border-brand-emerald/20"
-            >
-              <div className="flex items-center gap-3">
-                <div className="p-3 rounded-lg bg-brand-emerald/10">
-                  <MapPin size={20} className="text-brand-emerald" />
-                </div>
-                <div>
-                  <p className="text-slate-500 text-xs">Location</p>
-                  <p className="text-white font-medium">London, UK (GMT)</p>
-                </div>
-              </div>
-            </motion.div>
           </motion.div>
 
-          {/* Premium availability banner */}
+          {/* Availability banner — static, clean */}
           <motion.div
             variants={fadeInUp}
-            className="relative overflow-hidden rounded-2xl"
+            className="p-5 rounded-xl border"
+            style={{
+              backgroundColor: 'var(--bg-raised)',
+              borderColor: 'var(--border-accent)',
+            }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-brand-emerald/20 to-purple-600/20 animate-gradient-shift" />
-            <motion.div
-              className="relative p-8 glassmorphism-luxury border-2 border-brand-emerald/30 rounded-2xl text-center"
-              whileHover={{ scale: 1.02 }}
-            >
-              <motion.div
-                className="inline-flex items-center gap-2 mb-3"
-                animate={{
-                  opacity: [0.7, 1, 0.7],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
-              >
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 flex-shrink-0">
                 <motion.div
-                  className="w-3 h-3 bg-brand-emerald rounded-full"
-                  animate={{
-                    scale: [1, 1.3, 1],
-                    boxShadow: [
-                      '0 0 0 0 rgba(212, 175, 55, 0.7)',
-                      '0 0 0 10px rgba(212, 175, 55, 0)',
-                    ],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                  }}
+                  className="w-2 h-2 rounded-full bg-emerald-500"
+                  animate={{ scale: [1, 1.25, 1], opacity: [1, 0.7, 1] }}
+                  transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
                 />
-                <span className="text-brand-emerald font-semibold text-sm">
-                  Currently Available
-                </span>
-              </motion.div>
-              <p className="text-slate-200 text-lg">
-                <span className="text-gradient-luxury font-semibold">
-                  Seeking full-time opportunities
-                </span>
-                {' '}— Based in London (GMT), available for US/EU companies. Happy to work across time zones and start immediately.
-              </p>
-            </motion.div>
+                <span className="text-emerald-400 text-sm font-medium">Available</span>
+              </div>
+              <div className="w-px h-4 bg-white/10" />
+              <div className="flex items-center gap-1.5 text-slate-400 text-sm">
+                <MapPin size={13} className="text-slate-500 flex-shrink-0" />
+                London (GMT) · Open to US/EU remote · Can start immediately
+              </div>
+            </div>
           </motion.div>
+
         </motion.div>
       </div>
     </section>

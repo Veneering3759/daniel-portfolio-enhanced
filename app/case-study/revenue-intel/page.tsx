@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function RevenueIntelCaseStudy() {
   return (
-    <main className="bg-slate-950 min-h-screen pt-24 pb-32">
+    <main className="min-h-screen pt-24 pb-32" style={{ backgroundColor: 'var(--bg-base)' }}>
       <div className="max-w-3xl mx-auto px-6">
 
         {/* Back link */}

@@ -17,49 +17,39 @@ export function Navigation() {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         scrolled
-          ? 'bg-slate-950/95 backdrop-blur-2xl border-b border-slate-800/80'
-          : 'bg-slate-950/60 backdrop-blur-xl border-b border-transparent'
+          ? 'bg-[#0D1117]/95 backdrop-blur-xl border-b border-white/[0.06]'
+          : 'bg-transparent border-b border-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4, ease: 'easeOut' }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+            className="text-base font-semibold text-white hover:text-emerald-400 transition-colors duration-150"
           >
             Daniel Aryee
           </Link>
 
-          <div className="flex items-center gap-8">
-            <motion.a
-              href="/#projects"
-              className="text-slate-300 hover:text-blue-400 transition-colors font-medium relative group"
-              whileHover={{ y: -2 }}
-            >
-              Projects
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" />
-            </motion.a>
-            <motion.a
-              href="/#about"
-              className="text-slate-300 hover:text-blue-400 transition-colors font-medium relative group"
-              whileHover={{ y: -2 }}
-            >
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" />
-            </motion.a>
-            <motion.a
-              href="/#contact"
-              className="text-slate-300 hover:text-blue-400 transition-colors font-medium relative group"
-              whileHover={{ y: -2 }}
-            >
-              Contact
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-400 group-hover:w-full transition-all duration-300" />
-            </motion.a>
+          <div className="flex items-center gap-7">
+            {[
+              { label: 'Projects', href: '/#projects' },
+              { label: 'About',    href: '/#about' },
+              { label: 'Contact',  href: '/#contact' },
+            ].map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                className="text-sm text-slate-400 hover:text-slate-100 transition-colors duration-150 font-medium relative group"
+              >
+                {label}
+                <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-emerald-500 group-hover:w-full transition-all duration-200" />
+              </a>
+            ))}
           </div>
         </div>
       </div>
