@@ -38,18 +38,18 @@ export function ProjectsSection() {
             variants={fadeInUp}
             className="text-5xl md:text-6xl font-bold text-white mb-6"
           >
-            Production Ready{' '}
-            <span className="text-gradient-luxury">Applications</span>
+            Selected{' '}
+            <span className="text-gradient-luxury">Projects</span>
           </motion.h2>
           <motion.p variants={fadeInUp} className="text-xl text-slate-300 max-w-2xl mx-auto">
-            Real world SaaS applications built from concept to deployment,
-            solving actual business problems at scale
+            Full-stack applications built from concept to deployment.
+            Each project includes a technical breakdown of the decisions made.
           </motion.p>
         </motion.div>
 
         {/* Projects grid with luxury styling */}
         <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-10"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true, amount: 0.1 }}

@@ -40,14 +40,14 @@ export function ContactSection() {
                   ease: 'easeInOut',
                 }}
               />
-              <span className="text-brand-emerald text-sm font-semibold">Let's Collaborate</span>
+              <span className="text-brand-emerald text-sm font-semibold">Let&apos;s Collaborate</span>
             </motion.div>
 
             <motion.h2
               variants={fadeInUp}
               className="text-4xl md:text-5xl font-bold mb-4"
             >
-              <span className="text-white">Let's </span>
+              <span className="text-white">Let&apos;s </span>
               <span className="text-gradient-luxury">Work Together</span>
             </motion.h2>
 

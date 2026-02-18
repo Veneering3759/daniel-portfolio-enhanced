@@ -165,8 +165,8 @@ export function HeroSection() {
             animation: 'shimmer 4s linear infinite',
           }}
         >
-          Building full-stack web applications with React, Node.js, and MongoDB.
-          From fitness tracking to CRM systems, I create tools that solve real problems for real users.
+          Building full-stack applications with Next.js, Node.js, and MongoDB.
+          Stripe integrations, auth flows, and data-driven dashboards — from architecture to deployment.
         </motion.p>
 
         {/* Location badges with modern styling */}

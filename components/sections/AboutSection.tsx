@@ -2,14 +2,13 @@
 
 import { motion } from 'framer-motion'
 import { fadeInUp, staggerContainer } from '../animations/variants'
-import { Target, Code2, Globe2 } from 'lucide-react'
+import { Code2, Globe2, Layers } from 'lucide-react'
 
 export function AboutSection() {
   return (
-    <section id="about" className="py-32 bg-slate-900 relative overflow-hidden">
-      {/* Luxury background */}
-      <div className="absolute inset-0 gradient-mesh opacity-30" />
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-emerald to-transparent opacity-60" />
+    <section id="about" className="py-28 bg-slate-900 relative overflow-hidden">
+      <div className="absolute inset-0 gradient-mesh opacity-20" />
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
         <motion.div
@@ -19,123 +18,100 @@ export function AboutSection() {
           variants={staggerContainer}
         >
           {/* Header */}
-          <motion.h2
-            variants={fadeInUp}
-            className="text-4xl md:text-5xl font-bold text-center mb-4"
-          >
-            <span className="text-white">From Bodyguard to </span>
-            <span className="text-gradient-luxury">Full Stack Developer</span>
-          </motion.h2>
-
           <motion.p
             variants={fadeInUp}
-            className="text-center text-brand-emerald text-sm font-semibold mb-12"
+            className="text-center text-brand-emerald text-xs font-semibold tracking-widest uppercase mb-4"
           >
-            Self Taught • Problem Solver • Remote Ready
+            About
           </motion.p>
+          <motion.h2
+            variants={fadeInUp}
+            className="text-4xl md:text-5xl font-bold text-center mb-12"
+          >
+            <span className="text-white">Building with </span>
+            <span className="text-gradient-luxury">purpose and clarity</span>
+          </motion.h2>
 
-          {/* Content paragraphs with premium styling */}
-          <div className="space-y-6 text-lg text-slate-300 mb-12">
+          {/* Content */}
+          <div className="space-y-5 text-base text-slate-300 mb-12">
             <motion.p variants={fadeInUp} className="leading-relaxed">
-              I've always loved computers. As a kid, I was constantly taking things apart,
-              trying to understand how and why they worked. That curiosity stayed with me
-              through my career as a personal trainer and bodyguard, but it wasn't until
-              a car crash left me unable to do the physical work I used to that I discovered
-              my true calling.
+              Self-taught full-stack developer based in London. I came to programming through
+              deliberate self-study — Coursera, freeCodeCamp, and building real projects from
+              the start. That background means I&apos;m comfortable learning unfamiliar
+              systems, reading documentation without hand-holding, and working independently
+              through ambiguous problems.
             </motion.p>
 
             <motion.p variants={fadeInUp} className="leading-relaxed">
-              While searching for a new direction, only programming genuinely interested me.
-              I dove into the Full Stack Coursera course and freeCodeCamp study material, and
-              I immediately fell in love with the problem solving, the creative expression,
-              and the ability to build solutions that help real businesses. I haven't looked back since.
+              My focus is on backend-connected applications: data-driven dashboards, REST APIs
+              with clean data models, and full auth-protected product flows. I try to understand
+              the problem before reaching for a framework — choosing MongoDB when a flexible
+              schema genuinely helps, using server components when SSR reduces client complexity,
+              implementing a design system early when the application is complex enough to need one.
             </motion.p>
 
             <motion.div
               variants={fadeInUp}
-              className="p-6 luxury-card rounded-xl border-l-4 border-brand-emerald"
+              className="p-5 bg-slate-950/50 rounded-xl border-l-3 border border-slate-800 border-l-brand-emerald"
             >
-              <div className="flex items-start gap-3">
-                <Target size={24} className="text-brand-emerald flex-shrink-0 mt-1" />
-                <div>
-                  <p className="leading-relaxed">
-                    <span className="text-brand-emerald font-semibold">
-                      My approach to development:
-                    </span>{' '}
-                    Every technical decision I make considers the problem I'm solving, not just
-                    the code I'm writing. I choose MongoDB when I need flexible schemas for rapid
-                    iteration. I implement fuzzy matching algorithms when accuracy matters more than
-                    speed. I build reusable component systems when scalability is the priority.
-                    It's about understanding the "why" behind every choice.
-                  </p>
-                </div>
-              </div>
+              <p className="leading-relaxed text-slate-300">
+                <span className="text-slate-200 font-medium">Current focus:</span>{' '}
+                Stripe integrations, subscription data modeling, and building analytics layers
+                on top of payment APIs. Interested in roles where I can work across the full
+                stack with clear product context — not just tickets, but an understanding
+                of what the feature is actually trying to do.
+              </p>
             </motion.div>
 
             <motion.p variants={fadeInUp} className="leading-relaxed">
-              Based in London but built for remote work. I've managed full development cycles
-              independently, from initial architecture decisions to deployment and monitoring.
-              My applications handle real-world use cases, from CRM pipeline tracking to
-              managing complex event planning workflows with multiple integrated modules. Comfortable working
-              across US and EU time zones.
+              Based in London (GMT), comfortable working with US and EU teams. I&apos;ve managed
+              full development cycles independently — from architecture decisions to deployment
+              and debugging in production.
             </motion.p>
           </div>
 
-          {/* Premium stats cards */}
+          {/* Stat cards */}
           <motion.div
             variants={staggerContainer}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-3 gap-5"
           >
             <motion.div
               variants={fadeInUp}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="p-6 luxury-card rounded-xl text-center group cursor-default"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="p-5 bg-slate-950/60 rounded-xl border border-slate-800 text-center cursor-default"
             >
-              <motion.div
-                className="inline-flex p-3 rounded-full bg-blue-500/10 mb-3 group-hover:bg-blue-500/20 transition-colors"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Code2 size={24} className="text-blue-400" />
-              </motion.div>
-              <div className="text-4xl font-bold text-gradient-luxury mb-2">2+</div>
-              <div className="text-slate-400 text-sm">Production Apps</div>
+              <div className="inline-flex p-2.5 rounded-lg bg-blue-500/10 mb-3">
+                <Code2 size={20} className="text-blue-400" />
+              </div>
+              <div className="text-2xl font-bold text-white mb-1">Full Stack</div>
+              <div className="text-slate-500 text-sm">Frontend to API to database</div>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="p-6 luxury-card rounded-xl text-center border-2 border-brand-emerald/30 group cursor-default"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="p-5 bg-slate-950/60 rounded-xl border border-brand-emerald/20 text-center cursor-default"
             >
-              <motion.div
-                className="inline-flex p-3 rounded-full bg-brand-emerald/10 mb-3 group-hover:bg-brand-emerald/20 transition-colors"
-                whileHover={{ scale: 1.2 }}
-                transition={{ duration: 0.3 }}
-              >
-                <Target size={24} className="text-brand-emerald" />
-              </motion.div>
-              <div className="text-4xl font-bold text-brand-emerald mb-2">
-                Full Stack
+              <div className="inline-flex p-2.5 rounded-lg bg-brand-emerald/10 mb-3">
+                <Layers size={20} className="text-brand-emerald" />
               </div>
-              <div className="text-slate-400 text-sm">Development Expertise</div>
+              <div className="text-2xl font-bold text-white mb-1">Architecture</div>
+              <div className="text-slate-500 text-sm">Thoughtful about tradeoffs</div>
             </motion.div>
 
             <motion.div
               variants={fadeInUp}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="p-6 luxury-card rounded-xl text-center group cursor-default"
+              whileHover={{ y: -6 }}
+              transition={{ duration: 0.2 }}
+              className="p-5 bg-slate-950/60 rounded-xl border border-slate-800 text-center cursor-default"
             >
-              <motion.div
-                className="inline-flex p-3 rounded-full bg-emerald-500/10 mb-3 group-hover:bg-emerald-500/20 transition-colors"
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-              >
-                <Globe2 size={24} className="text-emerald-400" />
-              </motion.div>
-              <div className="text-4xl font-bold text-gradient-luxury mb-2">
-                100%
+              <div className="inline-flex p-2.5 rounded-lg bg-emerald-500/10 mb-3">
+                <Globe2 size={20} className="text-emerald-400" />
               </div>
-              <div className="text-slate-400 text-sm">Remote Ready</div>
+              <div className="text-2xl font-bold text-white mb-1">Remote</div>
+              <div className="text-slate-500 text-sm">London GMT · US/EU welcome</div>
             </motion.div>
           </motion.div>
         </motion.div>

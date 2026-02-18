@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import Link from 'next/link'
 import { useState, useRef } from 'react'
 import { fadeInUp } from '../animations/variants'
-import { ExternalLink, Github, Sparkles } from 'lucide-react'
+import { ExternalLink, Github } from 'lucide-react'
 
 interface ProjectCardProps {
   project: {
@@ -18,6 +18,7 @@ interface ProjectCardProps {
     githubUrl: string
     caseStudyUrl: string
     gradient: string
+    flagship?: boolean
   }
 }
 
@@ -25,27 +26,23 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const cardRef = useRef<HTMLDivElement>(null)
 
-  // Mouse position for 3D tilt
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
-  // Spring animations for smooth tilt
-  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [8, -8]), {
+  const rotateX = useSpring(useTransform(y, [-0.5, 0.5], [6, -6]), {
     stiffness: 300,
     damping: 30,
   })
-  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-8, 8]), {
+  const rotateY = useSpring(useTransform(x, [-0.5, 0.5], [-6, 6]), {
     stiffness: 300,
     damping: 30,
   })
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
-
     const rect = cardRef.current.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
-
     x.set((e.clientX - centerX) / (rect.width / 2))
     y.set((e.clientY - centerY) / (rect.height / 2))
   }
@@ -55,6 +52,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
     x.set(0)
     y.set(0)
   }
+
+  const isInternalCaseStudy = project.caseStudyUrl.startsWith('/')
 
   return (
     <motion.div
@@ -69,204 +68,131 @@ export function ProjectCard({ project }: ProjectCardProps) {
         transformStyle: 'preserve-3d',
       }}
       whileHover={{
-        y: -16,
+        y: -12,
         transition: { duration: 0.3 },
       }}
-      className="relative group"
+      className="relative group h-full"
     >
-      {/* Luxury animated border */}
-      <motion.div
-        className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        style={{
-          background: 'linear-gradient(135deg, #3B82F6, #D4AF37, #8B5CF6, #3B82F6)',
-          backgroundSize: '300% 300%',
-          padding: '2px',
-        }}
-        animate={{
-          backgroundPosition: isHovered ? ['0% 50%', '100% 50%', '0% 50%'] : '0% 50%',
-        }}
-        transition={{
-          duration: 4,
-          repeat: isHovered ? Infinity : 0,
-          ease: 'linear',
-        }}
-      >
-        <div className="w-full h-full rounded-2xl bg-slate-950" />
-      </motion.div>
+      {/* Hover border glow */}
+      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-px bg-gradient-to-br from-slate-600 via-slate-500 to-slate-600 rounded-2xl" />
 
       {/* Card content */}
-      <div className="relative luxury-card rounded-2xl overflow-hidden shadow-luxury group-hover:shadow-luxury-hover transition-shadow duration-500">
-        {/* Premium gradient header with gold accent */}
-        <div className="relative h-40 overflow-hidden">
+      <div className="relative luxury-card rounded-2xl overflow-hidden shadow-card h-full flex flex-col">
+
+        {/* Header gradient */}
+        <div className="relative h-36 overflow-hidden flex-shrink-0">
           <motion.div
             className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`}
-            animate={{
-              opacity: isHovered ? 0.5 : 0.3,
-            }}
+            animate={{ opacity: isHovered ? 0.55 : 0.35 }}
             transition={{ duration: 0.4 }}
           />
-
-          {/* Gold shimmer overlay */}
-          <motion.div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.3) 50%, transparent 70%)',
-              backgroundSize: '200% 200%',
-            }}
-            animate={{
-              backgroundPosition: isHovered ? ['0% 0%', '100% 100%'] : '0% 0%',
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: isHovered ? Infinity : 0,
-            }}
-          />
-
-          {/* Grid pattern overlay */}
           <div className="absolute inset-0 grid-pattern opacity-20" />
 
-          {/* Live indicator with green dot */}
+          {/* Flagship badge */}
+          {project.flagship && (
+            <div className="absolute top-4 left-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-slate-950/80 border border-violet-500/40 text-violet-300 text-xs font-medium rounded-full backdrop-blur-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-violet-400 inline-block" />
+                Flagship Project
+              </span>
+            </div>
+          )}
+
+          {/* Live indicator */}
           <div className="absolute top-4 right-4">
             <motion.div
               className="flex items-center gap-2 px-3 py-1.5 glassmorphism-luxury rounded-full"
-              initial={{ opacity: 0 }}
               animate={{ opacity: isHovered ? 1 : 0 }}
               transition={{ duration: 0.3 }}
             >
               <motion.div
                 className="w-2 h-2 bg-brand-emerald rounded-full"
-                animate={{
-                  scale: [1, 1.3, 1],
-                  opacity: [1, 0.6, 1],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                }}
+                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
+                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
               />
               <span className="text-brand-emerald text-xs font-semibold">Live</span>
             </motion.div>
           </div>
         </div>
 
-        {/* Content with premium styling */}
-        <div className="p-8">
-          {/* Title with luxury gradient */}
-          <motion.h3
-            className="text-2xl font-bold mb-2 group-hover:text-gradient-luxury transition-all duration-300"
-            style={{
-              color: isHovered ? undefined : 'white',
-            }}
-          >
-            {project.title}
-          </motion.h3>
+        {/* Content */}
+        <div className="p-7 flex flex-col flex-1">
+          <div className="flex-1">
+            <h3
+              className="text-xl font-bold mb-1.5 transition-colors duration-300"
+              style={{ color: isHovered ? undefined : 'white' }}
+            >
+              {isHovered ? (
+                <span className="text-gradient-luxury">{project.title}</span>
+              ) : project.title}
+            </h3>
 
-          <p className="text-gradient-gold text-sm mb-4 font-semibold">{project.tagline}</p>
-          <p className="text-slate-300 text-sm mb-5 leading-relaxed">{project.description}</p>
+            <p className="text-slate-400 text-xs font-medium mb-3 uppercase tracking-wide">{project.tagline}</p>
+            <p className="text-slate-300 text-sm mb-5 leading-relaxed">{project.description}</p>
 
-          {/* Highlights with gold bullets */}
-          <div className="space-y-2.5 mb-5">
-            {project.highlights.map((highlight, i) => (
-              <motion.div
-                key={i}
-                className="flex items-start gap-2"
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <motion.div
-                  className="w-1.5 h-1.5 rounded-full bg-brand-emerald mt-1.5 flex-shrink-0"
-                  whileHover={{ scale: 1.5, boxShadow: '0 0 10px rgba(212, 175, 55, 0.8)' }}
-                />
-                <p className="text-slate-400 text-sm flex-1">{highlight}</p>
-              </motion.div>
-            ))}
+            {/* Highlights */}
+            <div className="space-y-2 mb-5">
+              {project.highlights.map((highlight, i) => (
+                <div key={i} className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-slate-600 mt-1.5 flex-shrink-0" />
+                  <p className="text-slate-400 text-sm leading-snug">{highlight}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Tech badges */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {project.tech.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-2.5 py-1 bg-slate-900 border border-slate-700 text-slate-300 text-xs rounded-full"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
 
-          {/* Premium tech badges */}
-          <div className="flex flex-wrap gap-2 mb-6">
-            {project.tech.map((tech, i) => (
-              <motion.span
-                key={tech}
-                className="px-3 py-1.5 glassmorphism-luxury text-slate-200 text-xs rounded-full border border-brand-emerald/20 font-medium"
-                initial={{ opacity: 0, scale: 0 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                whileHover={{
-                  scale: 1.1,
-                  y: -3,
-                  backgroundColor: 'rgba(212, 175, 55, 0.1)',
-                  borderColor: 'rgba(212, 175, 55, 0.5)',
-                  boxShadow: '0 0 15px rgba(212, 175, 55, 0.3)',
-                }}
-                transition={{ delay: i * 0.05 }}
-                viewport={{ once: true }}
-              >
-                {tech}
-              </motion.span>
-            ))}
-          </div>
-
-          {/* Luxury action buttons */}
-          <div className="flex gap-3 items-center">
+          {/* Action buttons — pinned to bottom */}
+          <div className="flex gap-3 items-center pt-4 border-t border-slate-800 mt-auto">
             <motion.a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/btn flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg text-sm font-semibold relative overflow-hidden"
-              whileHover={{
-                scale: 1.05,
-                boxShadow: '0 0 30px rgba(59, 130, 246, 0.6)',
-              }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-white rounded-lg text-sm font-medium transition-colors"
+              whileTap={{ scale: 0.97 }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-brand-emerald to-blue-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"
-              />
-              <span className="relative z-10">Live Demo</span>
-              <ExternalLink size={14} className="relative z-10" />
+              <ExternalLink size={13} />
+              Live Demo
             </motion.a>
 
             <motion.a
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2.5 glassmorphism-luxury text-white rounded-lg text-sm font-semibold border border-brand-emerald/20 hover:border-brand-emerald/50"
-              whileHover={{
-                y: -3,
-                boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)',
-              }}
-              whileTap={{ scale: 0.95 }}
+              className="flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-slate-300 rounded-lg text-sm font-medium border border-slate-700 transition-colors"
+              whileTap={{ scale: 0.97 }}
             >
-              <Github size={14} />
+              <Github size={13} />
               Code
             </motion.a>
 
-            <Link href={project.caseStudyUrl} passHref>
-              <motion.span
-                className="ml-auto text-brand-emerald text-sm font-semibold cursor-pointer inline-flex items-center gap-1 hover:gap-2 transition-all"
-                whileHover={{ scale: 1.05 }}
+            {isInternalCaseStudy ? (
+              <Link href={project.caseStudyUrl} className="ml-auto text-brand-emerald text-sm font-medium hover:text-brand-emerald/80 transition-colors inline-flex items-center gap-1">
+                Case Study →
+              </Link>
+            ) : (
+              <a
+                href={project.caseStudyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="ml-auto text-slate-500 text-sm font-medium hover:text-slate-400 transition-colors inline-flex items-center gap-1"
               >
-                Case Study
-                <motion.span
-                  animate={{
-                    x: isHovered ? [0, 5, 0] : 0,
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: isHovered ? Infinity : 0,
-                  }}
-                >
-                  →
-                </motion.span>
-              </motion.span>
-            </Link>
+                View Live →
+              </a>
+            )}
           </div>
         </div>
-
-        {/* Luxury corner accent */}
-        <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-brand-emerald/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       </div>
     </motion.div>
   )
