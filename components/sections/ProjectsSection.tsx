@@ -42,7 +42,7 @@ export function ProjectsSection() {
             className="text-sm max-w-lg"
             style={{ color: 'var(--text-secondary)' }}
           >
-            Full-stack applications built from concept to deployment, each with a technical breakdown.
+            Full stack applications built from concept to deployment, each with a technical breakdown.
           </motion.p>
         </motion.div>
 

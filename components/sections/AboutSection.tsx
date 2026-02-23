@@ -42,16 +42,16 @@ export function AboutSection() {
             style={{ color: 'var(--text-secondary)' }}
           >
             <motion.p variants={fadeInUp}>
-              Self-taught full-stack developer based in London. I came to programming through
-              deliberate self-study — Coursera, freeCodeCamp, and building real projects from
+              Self taught full stack developer based in London. I came to programming through
+              deliberate self study — Coursera, freeCodeCamp, and building real projects from
               the start. That background means I&apos;m comfortable learning unfamiliar
-              systems, reading documentation without hand-holding, and working independently
+              systems, reading documentation without hand holding, and working independently
               through ambiguous problems.
             </motion.p>
 
             <motion.p variants={fadeInUp}>
-              My focus is on backend-connected applications: data-driven dashboards, REST APIs
-              with clean data models, and full auth-protected product flows. I try to understand
+              My focus is on backend connected applications: data driven dashboards, REST APIs
+              with clean data models, and full auth protected product flows. I try to understand
               the problem before reaching for a framework — choosing MongoDB when a flexible
               schema genuinely helps, using server components when SSR reduces client complexity,
               implementing a design system early when the application is complex enough to need one.

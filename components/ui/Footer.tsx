@@ -16,7 +16,7 @@ export function Footer() {
               <span style={{ color: 'var(--text-primary)' }}>Daniel Aryee Portfolio</span>
             </p>
             <p className="text-xs mt-0.5" style={{ color: 'var(--text-muted)' }}>
-              Full-Stack Developer · London, UK
+              Full Stack Developer · London, UK
             </p>
           </div>
 

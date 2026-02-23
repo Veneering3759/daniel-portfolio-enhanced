@@ -77,8 +77,8 @@ export function HeroSection() {
           className="text-sm sm:text-base mb-5 max-w-xl mx-auto leading-relaxed"
           style={{ color: 'var(--text-secondary)' }}
         >
-          Building full-stack applications with Next.js, Node.js, and MongoDB.
-          Stripe integrations, auth flows, and data-driven dashboards.
+          Building full stack applications with Next.js, Node.js, and MongoDB.
+          Stripe integrations, auth flows, and data driven dashboards.
         </motion.p>
 
         {/* Location chips */}

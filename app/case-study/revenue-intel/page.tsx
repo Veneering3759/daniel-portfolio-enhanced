@@ -4,7 +4,8 @@ import { ArrowLeft, ExternalLink, Github } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Revenue Intel — Case Study | Daniel Aryee Portfolio',
-  description: 'Technical breakdown of Revenue Intel: a Stripe analytics platform built with Next.js, MongoDB, and NextAuth.js.',
+  description:
+    'Technical breakdown of Revenue Intel: a Stripe analytics platform with AI support chat, built with Next.js, MongoDB, OpenAI API, and NextAuth.js.',
 }
 
 export default function RevenueIntelCaseStudy() {
@@ -30,7 +31,8 @@ export default function RevenueIntelCaseStudy() {
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2">Revenue Intel</h1>
           <p className="text-sm leading-relaxed mb-5 text-slate-400">
             A Stripe analytics dashboard that surfaces subscription churn signals,
-            checkout drop-off, and pricing inefficiencies in a single auth-protected view.
+            checkout drop off, and pricing inefficiencies — with an AI support chat
+            that understands the page context the user is viewing.
           </p>
 
           {/* Action links */}
@@ -58,7 +60,15 @@ export default function RevenueIntelCaseStudy() {
 
           {/* Tech badges */}
           <div className="flex flex-wrap gap-1.5">
-            {['Next.js (App Router)', 'TypeScript', 'Stripe SDK', 'MongoDB', 'NextAuth.js', 'Tailwind CSS'].map((tech) => (
+            {[
+              'Next.js (App Router)',
+              'TypeScript',
+              'Stripe SDK',
+              'OpenAI API',
+              'MongoDB',
+              'NextAuth.js',
+              'Tailwind CSS',
+            ].map((tech) => (
               <span
                 key={tech}
                 className="px-2 py-0.5 text-[11px] rounded text-slate-400"
@@ -79,15 +89,15 @@ export default function RevenueIntelCaseStudy() {
           <Section num="01" title="Overview">
             <p className="text-sm leading-relaxed text-slate-400">
               Revenue Intel is a subscription analytics platform built to give SaaS operators
-              clearer visibility into their Stripe data. Rather than context-switching between
-              Stripe&apos;s native dashboard, spreadsheets, and third-party tools, operators
+              clearer visibility into their Stripe data. Rather than context switching between
+              Stripe&apos;s native dashboard, spreadsheets, and third party tools, operators
               get one focused view — churn risk signals, checkout funnel performance,
               MRR trends, and pricing tier analysis.
             </p>
             <p className="text-sm leading-relaxed text-slate-400 mt-2">
-              The primary goal was to get comfortable with Stripe&apos;s API surface:
-              webhook delivery, subscription lifecycle events, idempotency, and the billing portal.
-              The dashboard layer was secondary — a useful way to make the backend work visible.
+              The platform ships with a demo dashboard preloaded with realistic SaaS subscription
+              data, demo mode guards that isolate test state from production, and an AI support
+              chat that adapts its context to whichever page the user is viewing.
             </p>
           </Section>
 
@@ -112,7 +122,7 @@ export default function RevenueIntelCaseStudy() {
             <ul className="space-y-2 mb-3">
               {[
                 'Stripe (source of truth): subscription events flow out via webhooks',
-                'Next.js API routes: webhook handler, Stripe proxy routes, auth middleware',
+                'Next.js API routes: webhook handler, Stripe proxy routes, OpenAI chat proxy, auth middleware',
                 'MongoDB: event log, derived subscription metrics, session store',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
@@ -129,10 +139,39 @@ export default function RevenueIntelCaseStudy() {
             </p>
           </Section>
 
-          <Section num="04" title="Stripe Integration Approach">
+          <Section num="04" title="AI Support Chat">
             <p className="text-sm leading-relaxed text-slate-400 mb-3">
-              The Stripe Node SDK lives exclusively in server-side code. The secret key is read from
-              environment variables server-side and never exposed to the client bundle.
+              The AI chat widget is powered by OpenAI&apos;s GPT-4o and surfaces as a floating button
+              on every dashboard page. Its defining feature is route aware context: the system prompt
+              changes based on which page the user is viewing.
+            </p>
+            <SubHeading>Route aware context prompts</SubHeading>
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
+              When a user opens the chat on the Churn Analysis page, the system prompt includes a
+              description of the churn metrics visible on that page. On the Funnel page, it shifts
+              context to checkout drop off and conversion rate concepts. This keeps responses
+              grounded and reduces hallucination about unrelated features.
+            </p>
+            <SubHeading>Server side proxy</SubHeading>
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
+              All OpenAI API calls are routed through <Code>POST /api/chat</Code> — a Next.js API
+              route that reads the OpenAI secret key from server only env vars and forwards the
+              request. The key never appears in the client bundle. The route also enforces a
+              per session message cap to prevent runaway token usage.
+            </p>
+            <SubHeading>Demo mode guards</SubHeading>
+            <p className="text-sm leading-relaxed text-slate-400">
+              When the app is running in demo mode, the chat widget is restricted to a curated set
+              of prompt topics. It cannot be used to query live customer data or trigger Stripe
+              operations. This boundary is enforced server side: the API route checks a{' '}
+              <Code>DEMO_MODE</Code> flag before processing requests that touch real data.
+            </p>
+          </Section>
+
+          <Section num="05" title="Stripe Integration Approach">
+            <p className="text-sm leading-relaxed text-slate-400 mb-3">
+              The Stripe Node SDK lives exclusively in server side code. The secret key is read from
+              environment variables server side and never exposed to the client bundle.
             </p>
             <SubHeading>Webhook Handler</SubHeading>
             <p className="text-sm leading-relaxed text-slate-400 mb-2">
@@ -157,11 +196,11 @@ export default function RevenueIntelCaseStudy() {
             <SubHeading>Billing Portal</SubHeading>
             <p className="text-sm leading-relaxed text-slate-400">
               Surfaced through a server action that creates a portal session and returns the URL
-              to the client — keeps the customer ID server-side.
+              to the client — keeps the customer ID server side.
             </p>
           </Section>
 
-          <Section num="05" title="Data Modeling Decisions">
+          <Section num="06" title="Data Modeling Decisions">
             <p className="text-sm leading-relaxed text-slate-400 mb-3">
               MongoDB was chosen for its flexible document model — Stripe webhook payloads vary
               significantly by event type.
@@ -187,12 +226,13 @@ export default function RevenueIntelCaseStudy() {
             </p>
           </Section>
 
-          <Section num="06" title="Security Considerations">
+          <Section num="07" title="Security Considerations">
             <ul className="space-y-3">
               {[
-                { point: 'Secret isolation',               detail: "Stripe secret key and webhook signing secret are server-only env vars. Next.js's build process never includes them in the client bundle." },
+                { point: 'Secret isolation',               detail: "Stripe and OpenAI secret keys are server only env vars. Next.js's build process never includes them in the client bundle." },
                 { point: 'Webhook signature verification',  detail: 'Every inbound webhook is verified with stripe.webhooks.constructEvent() before any processing. Invalid signatures return 400.' },
                 { point: 'Route protection',               detail: 'NextAuth.js middleware runs before route handlers on all /dashboard/* paths. Unauthenticated requests redirect at the middleware layer.' },
+                { point: 'Demo mode isolation',            detail: 'A server side DEMO_MODE flag gates all routes that touch real Stripe data or customer records. Demo sessions are fully sandboxed.' },
                 { point: 'Minimal data storage',           detail: 'No payment method details stored. Only Stripe customer IDs, subscription metadata, and event timestamps.' },
               ].map(({ point, detail }) => (
                 <li key={point} className="flex items-start gap-2.5">
@@ -205,7 +245,7 @@ export default function RevenueIntelCaseStudy() {
             </ul>
           </Section>
 
-          <Section num="07" title="Tradeoffs Made">
+          <Section num="08" title="Tradeoffs Made">
             <div className="space-y-3">
               {[
                 {
@@ -220,6 +260,10 @@ export default function RevenueIntelCaseStudy() {
                   decision: 'Synchronous webhook processing',
                   reasoning: "Events are processed synchronously in the API route handler — simple to reason about, but a slow DB write could cause Stripe to retry delivery. The fix is a job queue, but that scope wasn't justified yet.",
                 },
+                {
+                  decision: 'Per session token cap on AI chat',
+                  reasoning: 'A hard cap on chat messages per session prevents runaway OpenAI costs in production. The tradeoff is a degraded experience for power users; the right fix is usage based billing per account.',
+                },
               ].map(({ decision, reasoning }) => (
                 <div
                   key={decision}
@@ -233,14 +277,16 @@ export default function RevenueIntelCaseStudy() {
             </div>
           </Section>
 
-          <Section num="08" title="What I Would Improve Next">
+          <Section num="09" title="What I Would Improve Next">
             <ul className="space-y-2">
               {[
-                'Job queue for webhook processing (BullMQ or Mongo-backed) to decouple ingestion from processing and handle retries.',
-                'Application-layer event deduplication using Stripe event IDs beyond MongoDB _id uniqueness.',
+                'Job queue for webhook processing (BullMQ or Mongo backed) to decouple ingestion from processing and handle retries.',
+                'Application layer event deduplication using Stripe event IDs beyond MongoDB _id uniqueness.',
                 'A reconciliation endpoint that diffs local state against Stripe API to catch missed webhooks.',
+                'Streaming responses for the AI chat widget to improve perceived latency on long completions.',
+                'Usage based AI token budgeting per account instead of a flat per session cap.',
                 'CSV export for finance/accounting. The data is already there; it just needs a serialization layer.',
-                'Test coverage for the webhook handler using stripe-mock for realistic event payloads.',
+                'Test coverage for the webhook handler using stripe mock for realistic event payloads.',
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2.5">
                   <span className="w-1 h-1 rounded-full bg-slate-700 mt-[7px] flex-shrink-0" />
