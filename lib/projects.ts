@@ -5,7 +5,7 @@ export const projects = [
     tagline: 'Revenue analytics + churn + funnel insights for Stripe SaaS (with AI support chat).',
     description: 'Revenue intelligence platform that surfaces churn signals, checkout drop off, and pricing inefficiencies from Stripe subscription data. Includes an AI support chat with route aware context, a demo dashboard preloaded with realistic SaaS data, and demo mode guards so the live version is safe to share publicly.',
     image: '/projects/revenue-intel.png',
-    liveUrl: 'https://revenue-intel.vercel.app',
+    liveUrl: 'https://revenue-intel-two.vercel.app/',
     githubUrl: 'https://github.com/Veneering3759/revenue-intel',
     caseStudyUrl: '/case-study/revenue-intel',
     highlights: [
