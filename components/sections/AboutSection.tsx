@@ -51,11 +51,11 @@ export function AboutSection() {
                 <div
                   className="relative overflow-hidden"
                   style={{
-                    width: 180,
-                    height: 220,
+                    width: 220,
+                    height: 280,
                     borderRadius: 16,
-                    border: '1px solid rgba(255,255,255,0.09)',
-                    boxShadow: '0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1)',
+                    border: '1px solid rgba(16,185,129,0.22)',
+                    boxShadow: '0 0 0 4px rgba(16,185,129,0.06), 0 16px 48px rgba(0,0,0,0.55)',
                   }}
                 >
                   <Image
@@ -64,11 +64,6 @@ export function AboutSection() {
                     fill
                     className="object-cover object-top"
                     onError={() => setImgError(true)}
-                  />
-                  {/* Subtle emerald tint at bottom */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-16"
-                    style={{ background: 'linear-gradient(to top, rgba(16,185,129,0.06), transparent)' }}
                   />
                 </div>
               </div>
