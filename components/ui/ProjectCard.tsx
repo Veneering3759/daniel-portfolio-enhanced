@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { fadeInUp } from '../animations/variants'
 import { ExternalLink, Github } from 'lucide-react'
+import { useState } from 'react'
 
 interface ProjectCardProps {
   project: {
@@ -13,6 +15,7 @@ interface ProjectCardProps {
     description: string
     highlights: string[]
     tech: string[]
+    image?: string
     liveUrl: string
     githubUrl: string
     caseStudyUrl: string
@@ -23,6 +26,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const isInternal = project.caseStudyUrl.startsWith('/')
+  const [imgError, setImgError] = useState(false)
 
   return (
     <motion.div
@@ -38,9 +42,24 @@ export function ProjectCard({ project }: ProjectCardProps) {
           boxShadow: 'var(--shadow-card)',
         }}
       >
-        {/* Colour strip header */}
-        <div className={`relative h-16 flex-shrink-0 bg-gradient-to-br ${project.gradient} overflow-hidden`}>
-          <div className="absolute inset-0 bg-slate-950/55" />
+        {/* Screenshot or gradient header */}
+        <div className={`relative flex-shrink-0 overflow-hidden ${project.image && !imgError ? 'h-44' : 'h-16'} bg-gradient-to-br ${project.gradient}`}>
+          {project.image && !imgError ? (
+            <>
+              <Image
+                src={project.image}
+                alt={`${project.title} screenshot`}
+                fill
+                className="object-cover object-top"
+                onError={() => setImgError(true)}
+              />
+              {/* Subtle overlay so gradient tint shows */}
+              <div className="absolute inset-0 bg-slate-950/30" />
+            </>
+          ) : (
+            <div className="absolute inset-0 bg-slate-950/55" />
+          )}
+
           {project.flagship && (
             <div className="absolute top-2.5 left-3">
               <span
@@ -63,9 +82,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="p-5 flex flex-col flex-1">
           <div className="flex-1">
             {/* Title + category */}
-            <h3
-              className="text-base font-bold text-white mb-0.5 transition-colors duration-150 group-hover:text-emerald-400"
-            >
+            <h3 className="text-base font-bold text-white mb-0.5">
               {project.title}
             </h3>
             <p

@@ -38,7 +38,7 @@ export default function RevenueIntelCaseStudy() {
           {/* Action links */}
           <div className="flex items-center gap-2 flex-wrap mb-5">
             <a
-              href="https://revenue-intel.vercel.app"
+              href="https://revenue-intel-two.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white rounded bg-emerald-600 hover:bg-emerald-500 transition-colors duration-150"
@@ -311,7 +311,7 @@ export default function RevenueIntelCaseStudy() {
           </Link>
           <div className="flex gap-2">
             <a
-              href="https://revenue-intel.vercel.app"
+              href="https://revenue-intel-two.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-white rounded bg-emerald-600 hover:bg-emerald-500 transition-colors duration-150"

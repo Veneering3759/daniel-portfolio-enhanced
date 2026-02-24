@@ -34,7 +34,7 @@ export const projects = [
     image: '/projects/leadmanager.png',
     liveUrl: 'https://crm-dashboard-navy.vercel.app',
     githubUrl: 'https://github.com/Veneering3759/leadmanager-crm',
-    caseStudyUrl: 'https://crm-dashboard-navy.vercel.app',
+    caseStudyUrl: '/case-study/leadmanager',
     highlights: [
       'RESTful API with Express and Mongoose schema validation',
       'Pipeline status tracking with optimistic UI for immediate feedback',
@@ -59,7 +59,7 @@ export const projects = [
     image: '/projects/evently.png',
     liveUrl: 'https://daniel-planner.vercel.app',
     githubUrl: 'https://github.com/Veneering3759/daniel-planner',
-    caseStudyUrl: 'https://daniel-planner.vercel.app',
+    caseStudyUrl: '/case-study/evently',
     highlights: [
       'Six integrated modules sharing a unified design system and interaction patterns',
       'Mobile first responsive layout with Tailwind CSS breakpoints throughout',

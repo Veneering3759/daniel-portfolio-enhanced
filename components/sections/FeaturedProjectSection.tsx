@@ -2,12 +2,16 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ExternalLink, Github, ArrowRight } from 'lucide-react'
 import { projects } from '@/lib/projects'
 import { fadeInUp, staggerContainer } from '../animations/variants'
+import { useState } from 'react'
 
 export function FeaturedProjectSection() {
   const project = projects.find((p) => p.flagship)
+  const [imgError, setImgError] = useState(false)
+
   if (!project) return null
 
   const isInternalCaseStudy = project.caseStudyUrl.startsWith('/')
@@ -45,8 +49,23 @@ export function FeaturedProjectSection() {
               boxShadow: '0 0 60px rgba(16,185,129,0.05), 0 1px 4px rgba(0,0,0,0.4)',
             }}
           >
-            {/* Gradient stripe */}
-            <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
+            {/* Screenshot banner or gradient stripe */}
+            {project.image && !imgError ? (
+              <div className="relative h-52 overflow-hidden">
+                <Image
+                  src={project.image}
+                  alt={`${project.title} screenshot`}
+                  fill
+                  className="object-cover object-top"
+                  onError={() => setImgError(true)}
+                  priority
+                />
+                <div className="absolute inset-0 bg-slate-950/40" />
+                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
+              </div>
+            ) : (
+              <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
+            )}
 
             <div className="p-6 md:p-8">
               <div className="flex flex-col md:flex-row md:items-start gap-8">

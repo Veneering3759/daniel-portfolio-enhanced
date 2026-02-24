@@ -1,13 +1,16 @@
 'use client'
 
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { Github, Linkedin, Mail, MapPin, Globe, ArrowDown } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Globe, ArrowDown, Download } from 'lucide-react'
+import Image from 'next/image'
 import { profile } from '@/lib/projects'
 import { fadeInUp, textContainer, letterReveal, bounce } from '../animations/variants'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 export function HeroSection() {
   const containerRef = useRef(null)
+  const [imgError, setImgError] = useState(false)
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ['start start', 'end start'],
@@ -48,8 +51,28 @@ export function HeroSection() {
             animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
             transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
           />
-          <span className="text-emerald-400 text-xs font-medium">Available for Full-Time Roles</span>
+          <span className="text-emerald-400 text-xs font-medium">
+            Available — Full-Time &amp; Contract Roles
+          </span>
         </motion.div>
+
+        {/* Profile photo */}
+        {!imgError && (
+          <motion.div variants={fadeInUp} className="flex justify-center mb-5">
+            <div
+              className="relative w-20 h-20 rounded-full overflow-hidden ring-2 ring-emerald-500/25 ring-offset-2 ring-offset-[#0D1117]"
+            >
+              <Image
+                src="/profile.jpg"
+                alt="Daniel Aryee"
+                fill
+                className="object-cover"
+                onError={() => setImgError(true)}
+                priority
+              />
+            </div>
+          </motion.div>
+        )}
 
         {/* Name */}
         <motion.h1
@@ -77,8 +100,8 @@ export function HeroSection() {
           className="text-sm sm:text-base mb-5 max-w-xl mx-auto leading-relaxed"
           style={{ color: 'var(--text-secondary)' }}
         >
-          Building full stack applications with Next.js, Node.js, and MongoDB.
-          Stripe integrations, auth flows, and data driven dashboards.
+          I build Stripe-connected SaaS products — analytics dashboards, subscription
+          flows, and data-driven back-offices. Next.js, Node.js, MongoDB.
         </motion.p>
 
         {/* Location chips */}
@@ -118,6 +141,29 @@ export function HeroSection() {
             onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--accent)')}
           >
             View Portfolio →
+          </a>
+          <a
+            href="/daniel-aryee-cv.pdf"
+            download
+            className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-medium rounded-md transition-all duration-150"
+            style={{
+              border: '1px solid rgba(16,185,129,0.35)',
+              color: '#34d399',
+              backgroundColor: 'rgba(16,185,129,0.07)',
+            }}
+            onMouseEnter={e => {
+              const el = e.currentTarget as HTMLElement
+              el.style.backgroundColor = 'rgba(16,185,129,0.13)'
+              el.style.borderColor = 'rgba(16,185,129,0.55)'
+            }}
+            onMouseLeave={e => {
+              const el = e.currentTarget as HTMLElement
+              el.style.backgroundColor = 'rgba(16,185,129,0.07)'
+              el.style.borderColor = 'rgba(16,185,129,0.35)'
+            }}
+          >
+            <Download size={14} />
+            Download CV
           </a>
           <a
             href="#contact"

@@ -3,9 +3,24 @@
 import { motion } from 'framer-motion'
 import { profile } from '@/lib/projects'
 import { fadeInUp, staggerContainer } from '../animations/variants'
-import { Mail, Github, Linkedin, MapPin } from 'lucide-react'
+import { Mail, Github, Linkedin, MapPin, Send } from 'lucide-react'
+import { useState } from 'react'
 
 export function ContactSection() {
+  const [name, setName]       = useState('')
+  const [message, setMessage] = useState('')
+  const [sent, setSent]       = useState(false)
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault()
+    if (!name.trim() || !message.trim()) return
+    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+    const body    = encodeURIComponent(`Hi Daniel,\n\n${message}\n\nBest,\n${name}`)
+    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`
+    setSent(true)
+    setTimeout(() => setSent(false), 4000)
+  }
+
   return (
     <section
       id="contact"
@@ -41,9 +56,82 @@ export function ContactSection() {
               className="text-sm"
               style={{ color: 'var(--text-secondary)' }}
             >
-              Looking for my first full-time developer role to build production applications
+              Open to full-time roles and project-based contracts building production-grade applications
             </motion.p>
           </motion.div>
+
+          {/* Contact form */}
+          <motion.form
+            variants={fadeInUp}
+            onSubmit={handleSubmit}
+            className="rounded-lg border p-5 mb-4"
+            style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
+          >
+            <div className="flex flex-col sm:flex-row gap-3 mb-3">
+              <div className="flex-1">
+                <label
+                  htmlFor="contact-name"
+                  className="block text-[11px] font-medium mb-1.5"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  Your name
+                </label>
+                <input
+                  id="contact-name"
+                  type="text"
+                  required
+                  value={name}
+                  onChange={e => setName(e.target.value)}
+                  placeholder="Jane Smith"
+                  className="w-full px-3 py-2 text-sm rounded-md outline-none transition-colors duration-150 placeholder:text-slate-600"
+                  style={{
+                    backgroundColor: 'var(--bg-base)',
+                    border: '1px solid var(--border)',
+                    color: 'var(--text-primary)',
+                  }}
+                  onFocus={e => (e.currentTarget.style.borderColor = 'rgba(16,185,129,0.4)')}
+                  onBlur={e => (e.currentTarget.style.borderColor = 'var(--border)')}
+                />
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label
+                htmlFor="contact-message"
+                className="block text-[11px] font-medium mb-1.5"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                Message
+              </label>
+              <textarea
+                id="contact-message"
+                required
+                rows={4}
+                value={message}
+                onChange={e => setMessage(e.target.value)}
+                placeholder="Tell me about the role or project..."
+                className="w-full px-3 py-2 text-sm rounded-md outline-none resize-none transition-colors duration-150 placeholder:text-slate-600"
+                style={{
+                  backgroundColor: 'var(--bg-base)',
+                  border: '1px solid var(--border)',
+                  color: 'var(--text-primary)',
+                }}
+                onFocus={e => (e.currentTarget.style.borderColor = 'rgba(16,185,129,0.4)')}
+                onBlur={e => (e.currentTarget.style.borderColor = 'var(--border)')}
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white rounded-md transition-colors duration-150"
+              style={{ backgroundColor: 'var(--accent)' }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#0EA572')}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'var(--accent)')}
+            >
+              <Send size={13} />
+              {sent ? 'Opening your email client…' : 'Send Message'}
+            </button>
+          </motion.form>
 
           {/* Contact cards */}
           <motion.div
@@ -159,7 +247,7 @@ export function ContactSection() {
             <div className="w-px h-3.5" style={{ backgroundColor: 'var(--border)' }} />
             <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
               <MapPin size={11} style={{ color: 'var(--text-muted)' }} />
-              London GMT · US/EU remote · Can start immediately
+              London GMT · US/EU remote · Full-time &amp; contract · Can start immediately
             </div>
           </motion.div>
         </motion.div>

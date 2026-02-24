@@ -54,7 +54,7 @@ export function ProjectsSection() {
           viewport={{ once: true, amount: 0.05 }}
           variants={staggerContainer}
         >
-          {projects.map((project) => (
+          {projects.filter((p) => !p.flagship).map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
