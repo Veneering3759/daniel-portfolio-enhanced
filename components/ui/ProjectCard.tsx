@@ -27,23 +27,30 @@ interface ProjectCardProps {
 export function ProjectCard({ project }: ProjectCardProps) {
   const isInternal = project.caseStudyUrl.startsWith('/')
   const [imgError, setImgError] = useState(false)
+  const [hovered, setHovered] = useState(false)
 
   return (
     <motion.div
       variants={fadeInUp}
       whileHover={{ y: -4, transition: { duration: 0.18, ease: 'easeOut' } }}
       className="h-full"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       <div
-        className="h-full flex flex-col rounded-lg overflow-hidden border transition-colors duration-200"
+        className="h-full flex flex-col rounded-xl overflow-hidden border transition-all duration-200"
         style={{
           backgroundColor: 'var(--bg-raised)',
-          borderColor: 'var(--border)',
-          boxShadow: 'var(--shadow-card)',
+          borderColor: hovered ? 'rgba(16,185,129,0.15)' : 'var(--border)',
+          boxShadow: hovered
+            ? '0 0 0 1px rgba(16,185,129,0.2), 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(16,185,129,0.08)'
+            : 'var(--shadow-card)',
         }}
       >
         {/* Screenshot or gradient header */}
-        <div className={`relative flex-shrink-0 overflow-hidden ${project.image && !imgError ? 'h-44' : 'h-16'} bg-gradient-to-br ${project.gradient}`}>
+        <div
+          className={`relative flex-shrink-0 overflow-hidden ${project.image && !imgError ? 'h-48' : 'h-14'} bg-gradient-to-br ${project.gradient}`}
+        >
           {project.image && !imgError ? (
             <>
               <Image
@@ -53,8 +60,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
                 className="object-cover object-top"
                 onError={() => setImgError(true)}
               />
-              {/* Subtle overlay so gradient tint shows */}
-              <div className="absolute inset-0 bg-slate-950/30" />
+              {/* Gradient overlay for depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/20 to-transparent" />
             </>
           ) : (
             <div className="absolute inset-0 bg-slate-950/55" />
@@ -79,7 +86,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         {/* Body */}
-        <div className="p-5 flex flex-col flex-1">
+        <div className="p-6 flex flex-col flex-1">
           <div className="flex-1">
             {/* Title + category */}
             <h3 className="text-base font-bold text-white mb-0.5">

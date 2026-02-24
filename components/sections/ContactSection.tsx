@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { profile } from '@/lib/projects'
 import { fadeInUp, staggerContainer } from '../animations/variants'
-import { Mail, Github, Linkedin, MapPin, Send } from 'lucide-react'
+import { Mail, Github, Linkedin, Send } from 'lucide-react'
 import { useState } from 'react'
 
 export function ContactSection() {
@@ -25,9 +25,12 @@ export function ContactSection() {
     <section
       id="contact"
       className="py-16 relative"
-      style={{ backgroundColor: 'var(--bg-base)' }}
+      style={{ backgroundColor: 'var(--bg-surface)' }}
     >
-      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }} />
+      <div
+        className="absolute top-0 inset-x-0 h-px"
+        style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }}
+      />
 
       <div className="max-w-3xl mx-auto px-5">
         <motion.div
@@ -38,25 +41,23 @@ export function ContactSection() {
         >
           {/* Header */}
           <motion.div className="mb-8">
-            <motion.p
-              variants={fadeInUp}
-              className="text-xs font-semibold tracking-widest uppercase mb-2"
-              style={{ color: 'var(--accent)' }}
-            >
-              Contact
-            </motion.p>
             <motion.h2
               variants={fadeInUp}
-              className="text-2xl md:text-3xl font-bold text-white mb-2"
+              className="text-3xl md:text-4xl font-bold text-white mb-3"
             >
-              Get in Touch
+              Let&apos;s build something.
             </motion.h2>
             <motion.p
               variants={fadeInUp}
-              className="text-sm"
+              className="text-sm flex items-center gap-2"
               style={{ color: 'var(--text-secondary)' }}
             >
-              Open to full-time roles and project-based contracts building production-grade applications
+              <motion.span
+                className="w-2 h-2 rounded-full bg-emerald-500 inline-block flex-shrink-0"
+                animate={{ scale: [1, 1.35, 1], opacity: [1, 0.55, 1] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
+              />
+              I&apos;m available now and respond within 24 hours.
             </motion.p>
           </motion.div>
 
@@ -64,7 +65,7 @@ export function ContactSection() {
           <motion.form
             variants={fadeInUp}
             onSubmit={handleSubmit}
-            className="rounded-lg border p-5 mb-4"
+            className="rounded-xl border p-6 mb-4"
             style={{ backgroundColor: 'var(--bg-raised)', borderColor: 'var(--border)' }}
           >
             <div className="flex flex-col sm:flex-row gap-3 mb-3">
@@ -83,7 +84,7 @@ export function ContactSection() {
                   value={name}
                   onChange={e => setName(e.target.value)}
                   placeholder="Jane Smith"
-                  className="w-full px-3 py-2 text-sm rounded-md outline-none transition-colors duration-150 placeholder:text-slate-600"
+                  className="w-full px-4 py-2.5 text-sm rounded-xl outline-none transition-colors duration-150 placeholder:text-slate-600"
                   style={{
                     backgroundColor: 'var(--bg-base)',
                     border: '1px solid var(--border)',
@@ -95,7 +96,7 @@ export function ContactSection() {
               </div>
             </div>
 
-            <div className="mb-4">
+            <div className="mb-5">
               <label
                 htmlFor="contact-message"
                 className="block text-[11px] font-medium mb-1.5"
@@ -110,7 +111,7 @@ export function ContactSection() {
                 value={message}
                 onChange={e => setMessage(e.target.value)}
                 placeholder="Tell me about the role or project..."
-                className="w-full px-3 py-2 text-sm rounded-md outline-none resize-none transition-colors duration-150 placeholder:text-slate-600"
+                className="w-full px-4 py-2.5 text-sm rounded-xl outline-none resize-none transition-colors duration-150 placeholder:text-slate-600"
                 style={{
                   backgroundColor: 'var(--bg-base)',
                   border: '1px solid var(--border)',
@@ -227,28 +228,21 @@ export function ContactSection() {
             </motion.a>
           </motion.div>
 
-          {/* Availability pill */}
+          {/* Closing statement — replaces availability pill */}
           <motion.div
             variants={fadeInUp}
-            className="p-4 rounded-lg border flex items-center gap-3 flex-wrap"
+            className="pl-5 py-4 pr-5 rounded-lg"
             style={{
               backgroundColor: 'var(--bg-raised)',
-              borderColor: 'var(--border-accent)',
+              borderLeft: '3px solid var(--accent)',
+              border: '1px solid var(--border)',
+              borderLeftWidth: '3px',
+              borderLeftColor: 'var(--accent)',
             }}
           >
-            <div className="flex items-center gap-2">
-              <motion.span
-                className="w-2 h-2 rounded-full bg-emerald-500 inline-block"
-                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.6, 1] }}
-                transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <span className="text-xs font-medium text-emerald-400">Available</span>
-            </div>
-            <div className="w-px h-3.5" style={{ backgroundColor: 'var(--border)' }} />
-            <div className="flex items-center gap-1.5 text-xs" style={{ color: 'var(--text-secondary)' }}>
-              <MapPin size={11} style={{ color: 'var(--text-muted)' }} />
-              London GMT · US/EU remote · Full-time &amp; contract · Can start immediately
-            </div>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              Currently taking on new projects — full-time roles and contract work. Based in London (GMT), comfortable with US and EU timezones.
+            </p>
           </motion.div>
         </motion.div>
       </div>

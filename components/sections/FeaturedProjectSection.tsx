@@ -17,7 +17,7 @@ export function FeaturedProjectSection() {
   const isInternalCaseStudy = project.caseStudyUrl.startsWith('/')
 
   return (
-    <section className="py-14 relative" style={{ backgroundColor: 'var(--bg-base)' }}>
+    <section className="py-14 relative" style={{ backgroundColor: 'var(--bg-surface)' }}>
       <div
         className="absolute top-0 inset-x-0 h-px"
         style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }}
@@ -45,29 +45,59 @@ export function FeaturedProjectSection() {
             className="relative rounded-xl overflow-hidden"
             style={{
               backgroundColor: 'var(--bg-raised)',
-              border: '1px solid rgba(16,185,129,0.18)',
-              boxShadow: '0 0 60px rgba(16,185,129,0.05), 0 1px 4px rgba(0,0,0,0.4)',
+              border: '1px solid rgba(16,185,129,0.28)',
+              boxShadow: '0 0 0 1px rgba(16,185,129,0.08), 0 0 80px rgba(16,185,129,0.10), 0 2px 8px rgba(0,0,0,0.5)',
             }}
           >
-            {/* Screenshot banner or gradient stripe */}
+            {/* Screenshot with browser chrome mockup, or gradient stripe */}
             {project.image && !imgError ? (
-              <div className="relative h-52 overflow-hidden">
-                <Image
-                  src={project.image}
-                  alt={`${project.title} screenshot`}
-                  fill
-                  className="object-cover object-top"
-                  onError={() => setImgError(true)}
-                  priority
-                />
-                <div className="absolute inset-0 bg-slate-950/40" />
-                <div className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${project.gradient}`} />
+              <div className="relative">
+                {/* Browser chrome bar */}
+                <div
+                  className="flex items-center gap-3 px-4 py-2.5"
+                  style={{
+                    backgroundColor: '#1a1f2e',
+                    borderBottom: '1px solid rgba(255,255,255,0.07)',
+                  }}
+                >
+                  {/* Traffic light dots */}
+                  <div className="flex items-center gap-1.5 flex-shrink-0">
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#FF5F57' }} />
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#FFBD2E' }} />
+                    <span className="w-3 h-3 rounded-full" style={{ backgroundColor: '#28CA41' }} />
+                  </div>
+                  {/* URL bar */}
+                  <div
+                    className="flex-1 mx-2 px-3 py-1 rounded text-xs truncate"
+                    style={{
+                      backgroundColor: 'rgba(0,0,0,0.35)',
+                      border: '1px solid rgba(255,255,255,0.08)',
+                      color: 'rgba(148,163,184,0.7)',
+                      fontFamily: 'monospace',
+                    }}
+                  >
+                    {project.liveUrl.replace(/^https?:\/\//, '')}
+                  </div>
+                </div>
+                {/* Screenshot */}
+                <div className="relative h-64 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    fill
+                    className="object-cover object-top"
+                    onError={() => setImgError(true)}
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-slate-950/30" />
+                  <div className={`absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r ${project.gradient}`} />
+                </div>
               </div>
             ) : (
               <div className={`h-1.5 bg-gradient-to-r ${project.gradient}`} />
             )}
 
-            <div className="p-6 md:p-8">
+            <div className="p-7 md:p-10">
               <div className="flex flex-col md:flex-row md:items-start gap-8">
 
                 {/* Left: heading + description + CTAs */}
@@ -197,7 +227,7 @@ export function FeaturedProjectSection() {
                     className="rounded-lg p-5"
                     style={{
                       backgroundColor: 'rgba(0,0,0,0.22)',
-                      border: '1px solid var(--border-subtle)',
+                      border: '1px solid var(--border)',
                     }}
                   >
                     <p
@@ -226,7 +256,7 @@ export function FeaturedProjectSection() {
 
                     <div
                       className="pt-3 border-t"
-                      style={{ borderColor: 'var(--border-subtle)' }}
+                      style={{ borderColor: 'var(--border)' }}
                     >
                       <p
                         className="text-[10px] font-semibold uppercase tracking-widest mb-2"

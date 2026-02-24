@@ -15,9 +15,12 @@ export function TechStackSection() {
   return (
     <section
       className="py-16 relative"
-      style={{ backgroundColor: 'var(--bg-base)' }}
+      style={{ backgroundColor: 'var(--bg-surface)' }}
     >
-      <div className="absolute top-0 inset-x-0 h-px" style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }} />
+      <div
+        className="absolute top-0 inset-x-0 h-px"
+        style={{ background: 'linear-gradient(to right, transparent, var(--border), transparent)' }}
+      />
 
       <div className="max-w-6xl mx-auto px-5">
         {/* Header */}
@@ -34,39 +37,68 @@ export function TechStackSection() {
           >
             Stack
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold text-white">Tech Stack</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-white">
+            Tools I ship with
+          </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-3 gap-4">
-          {categories.map(({ key, label }) => (
-            <motion.div
-              key={key}
-              initial="initial"
-              whileInView="animate"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={staggerContainerFast}
-              className="rounded-lg p-5 border"
-              style={{
-                backgroundColor: 'var(--bg-raised)',
-                borderColor: 'var(--border)',
-              }}
-            >
-              <motion.p
+        {/* Unified card with three columns */}
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={staggerContainerFast}
+          className="rounded-xl border overflow-hidden"
+          style={{
+            backgroundColor: 'var(--bg-raised)',
+            borderColor: 'var(--border)',
+          }}
+        >
+          <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x"
+            style={{ '--tw-divide-opacity': '1', borderColor: 'var(--border)' } as React.CSSProperties}
+          >
+            {categories.map(({ key, label }, idx) => (
+              <motion.div
+                key={key}
                 variants={fadeInUp}
-                className="text-xs font-semibold uppercase tracking-wide mb-4"
-                style={{ color: 'var(--text-secondary)' }}
+                className="p-6"
+                style={
+                  idx < categories.length - 1
+                    ? { borderColor: 'var(--border)' }
+                    : undefined
+                }
               >
-                {label}
-              </motion.p>
-              <div className="flex flex-wrap gap-1.5">
-                {skills[key].map((skill) => (
-                  <SkillBadge key={skill} skill={skill} category={key} />
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
+                <p
+                  className="text-[10px] font-semibold uppercase tracking-widest mb-4"
+                  style={{ color: 'var(--text-muted)' }}
+                >
+                  {label}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {skills[key].map((skill) => (
+                    <SkillBadge key={skill} skill={skill} category={key} />
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Trust signal footer strip */}
+          <div
+            className="px-6 py-3 border-t"
+            style={{
+              backgroundColor: 'rgba(0,0,0,0.18)',
+              borderColor: 'var(--border)',
+            }}
+          >
+            <p
+              className="text-xs italic text-center"
+              style={{ color: 'var(--text-muted)' }}
+            >
+              Every project ships to production. No localhost demos.
+            </p>
+          </div>
+        </motion.div>
       </div>
     </section>
   )
