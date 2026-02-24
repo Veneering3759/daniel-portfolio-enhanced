@@ -45,16 +45,30 @@ export function AboutSection() {
             variants={fadeInUp}
             className="flex flex-col sm:flex-row gap-6 mb-6"
           >
-            {/* Profile photo */}
+            {/* Profile photo — large */}
             {!imgError && (
               <div className="flex-shrink-0 flex sm:block justify-center">
-                <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-xl overflow-hidden ring-1 ring-white/10">
+                <div
+                  className="relative overflow-hidden"
+                  style={{
+                    width: 180,
+                    height: 220,
+                    borderRadius: 16,
+                    border: '1px solid rgba(255,255,255,0.09)',
+                    boxShadow: '0 8px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(16,185,129,0.1)',
+                  }}
+                >
                   <Image
                     src="/profile.jpg"
                     alt="Daniel Aryee"
                     fill
-                    className="object-cover"
+                    className="object-cover object-top"
                     onError={() => setImgError(true)}
+                  />
+                  {/* Subtle emerald tint at bottom */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-16"
+                    style={{ background: 'linear-gradient(to top, rgba(16,185,129,0.06), transparent)' }}
                   />
                 </div>
               </div>
